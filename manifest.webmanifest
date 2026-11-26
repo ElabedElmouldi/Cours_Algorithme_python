@@ -1,0 +1,21 @@
+{
+  "name": "Cours Algorithmique & Python - 3ème Sciences",
+  "short_name": "AlgoPython 3Sc",
+  "description": "Cours complet, exercices d'auto-évaluation et animations interactives d'algorithmique et programmation Python.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/img/couverture.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/img/couverture.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
