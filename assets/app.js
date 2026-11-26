@@ -1202,21 +1202,21 @@ function build(c){
     e += `<div class="ex-box" id="${exId}_box">
       <div class="ex-head">
         <h4>Exercice ${exNum}</h4>
-        <span class="ex-badge ${isDone?'ok':''}" id="${exId}_badge">${isDone?'✔ Réussi':'À faire'}</span>
+        <span class="ex-badge ${isDone?'ok':''}" id="${exId}_badge" role="status" aria-live="polite">${isDone?'✔ Réussi':'À faire'}</span>
       </div>
       <p>${c.ex[i]}</p>
       <div class="ex-editor">
         <div class="ex-editor-top">
-          <span>🐍 Votre solution Python :</span>
+          <label for="${exId}">🐍 Votre solution Python :</label>
           <button class="btn-text" type="button" onclick="resetEx('${exId}')">↺ Réinitialiser</button>
         </div>
-        <textarea class="pyc ex-pyc" id="${exId}" spellcheck="false" placeholder="# Écrivez votre code Python ici...">${esc(savedCode)}</textarea>
+        <textarea class="pyc ex-pyc" id="${exId}" aria-label="Votre solution Python pour l’exercice ${exNum}" spellcheck="false" placeholder="# Écrivez votre code Python ici...">${esc(savedCode)}</textarea>
         <div class="ex-actions">
-          <button class="btn s" type="button" onclick="runEx('${c.id}', ${exNum}, '${exId}')">▶ Tester ma solution</button>
-          <button class="btn" type="button" onclick="hintEx('${c.id}', ${exNum}, '${exId}')">💡 Indice</button>
+          <button class="btn s" type="button" onclick="runEx('${c.id}', ${exNum}, '${exId}')" aria-label="Tester votre solution à l’exercice ${exNum}">▶ Tester ma solution</button>
+          <button class="btn" type="button" onclick="hintEx('${c.id}', ${exNum}, '${exId}')" aria-label="Afficher un indice pour l’exercice ${exNum}">💡 Indice</button>
           <a class="btn s" target="_blank" rel="noopener" href="${EDI}">Éditeur en ligne</a>
         </div>
-        <pre class="out ex-out" id="${exId}_out" style="display:none"></pre>
+        <pre class="out ex-out" id="${exId}_out" role="status" aria-live="polite" aria-atomic="true" style="display:none"></pre>
       </div>
       <details><summary>Voir la correction officielle</summary><pre>${esc(c.ex[i+1])}</pre></details>
       <p class="elv">🔒 Correction réservée au mode professeur.</p>
@@ -1224,7 +1224,7 @@ function build(c){
   }
   h+=`<div class="card"><h3>Série d’exercices avec auto-évaluation</h3>${e}</div>`;
 }
- if(c.q)h+=`<div class="card"><h3>Quiz</h3>${c.q.map((q,i)=>`<div class="q" data-a="${q[2]}"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="q${c.id}${i}" value="${j}"> ${o}</label>`).join('')}<span></span></div>`).join('')}<button class="btn s" onclick="score(this)">Corriger le quiz</button> <b class="sc"></b></div>`;
+ if(c.q)h+=`<div class="card"><h3>Quiz</h3>${c.q.map((q,i)=>`<div class="q" data-a="${q[2]}"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="q${c.id}${i}" value="${j}"> ${o}</label>`).join('')}<span></span></div>`).join('')}<button class="btn s" type="button" onclick="score(this)">Corriger le quiz</button> <b class="sc" role="status" aria-live="polite"></b></div>`;
  $('#main').innerHTML=h;if(c.id==='sd')demo();if(c.id==='syn')synInit();if(c.id==='cond'||c.id==='iter')dt(c.id,[]);if(c.id==='act')actInit();if(c.id==='tab')gridInit();
  if(c.anim)setupAnim(c.anim);
 }
@@ -1257,11 +1257,11 @@ function theme(id){const t=TH[id],lt=h=>{const n=parseInt(h.slice(1),16),m=v=>Ma
 const ID='Cours proposé par <b>Elabed Elmouldi</b> · Classe 3 Sc · A.S. 2026/2027';
 function boot(id){const i=C.findIndex(c=>c.id===id),c=C[i],T=theme(id);document.title=c.t+' – Cours 3 Sc';
  $('#hd').innerHTML=`<div class="big">${T[4]}</div><h1>${esc(c.t.replace(/^\d+\. /,''))}</h1><p>${T[5]}</p><p class="id">Chapitre ${i+1}/${C.length} · ${ID}</p>`;
- $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres">☰ Chapitres</button><a class="nb" href="index.html">🏠 Index</a>${i>0?`<a class="nb" href="${pg(i-1)}" title="${esc(C[i-1].t)}">◀ Précédent</a>`:''}${i<C.length-1?`<a class="nb" href="${pg(i+1)}" title="${esc(C[i+1].t)}">Suivant ▶</a>`:''}<a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python</a>`;
+ $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres" aria-label="Ouvrir le sommaire des chapitres" aria-controls="drawer" aria-expanded="false">☰ Chapitres</button><a class="nb" href="index.html">🏠 Index</a>${i>0?`<a class="nb" href="${pg(i-1)}" title="${esc(C[i-1].t)}">◀ Précédent</a>`:''}${i<C.length-1?`<a class="nb" href="${pg(i+1)}" title="${esc(C[i+1].t)}">Suivant ▶</a>`:''}<a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python</a>`;
  build(c)}
 function indexPage(){document.title='Algorithmique et programmation – 3 Sc';
  $('#hd').innerHTML=`<div class="big">🐍</div><h1>Algorithmique et programmation Python</h1><p>3ème année – Mathématiques, Sciences expérimentales, Sciences techniques · Aide pédagogique Sept. 2026</p><p class="id">${ID}</p>`;
- $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres">☰ Chapitres</button><a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python en ligne</a>`;
+ $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres" aria-label="Ouvrir le sommaire des chapitres" aria-controls="drawer" aria-expanded="false">☰ Chapitres</button><a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python en ligne</a>`;
  $('#main').innerHTML='<div class="card hero"><img src="assets/img/couverture.jpg" alt="Couverture du cours"><div><h3>Bienvenue</h3><p>Ce cours couvre le programme d’informatique de la 3ème année : démarche de résolution, structures de données, conditionnels, itératifs, chaînes, tableaux, modules, recherches et tris. Chaque chapitre propose cours, animations, exercices corrigés et quiz.</p></div></div><h2>Sommaire des cours</h2><div class="grid">'+C.map((c,i)=>{const T=TH[c.id];return `<a class="gc" style="--c:${T[0]};--c2:${T[3]};animation-delay:${i*.05}s" href="${pg(i)}"><span class="gi">${T[4]}</span><b>${esc(c.t)}</b><small>${T[5]}</small><em>${c.ex?c.ex.length/2:0} exercices corrigés · ${c.q?c.q.length:0} questions${(c.anim||c.S.some(s=>s.an)||c.id==='syn')?' · 🎬 animations':''}</em></a>`}).join('')+'</div><div class="card"><h3>🧠 Carte mentale du cours</h3><a href="assets/img/carte-mentale.jpg" target="_blank"><img class="inf" src="assets/img/carte-mentale.jpg" alt="Carte mentale du cours"></a><p style="font-size:.8rem">Cliquer pour agrandir. Une carte mentale détaillée est aussi proposée au début de chaque chapitre.</p></div><div class="card"><h3>📥 Ressources à télécharger</h3><ul><li><a href="ressources/livret_eleve_3sc.pdf" target="_blank">Livret de l’élève (PDF, sans corrigés)</a></li><li><a href="ressources/fiches_revision_3sc.pdf" target="_blank">Fiches de révision (PDF, 1 page par chapitre)</a></li><li><a href="ressources/fiches_TP_eleve_3sc.pdf" target="_blank">Fiches de TP (PDF, élève)</a></li></ul></div><div class="card"><h3>Comment utiliser ce cours</h3><p>Chaque chapitre est une page indépendante : suivez l’ordre proposé ou choisissez un chapitre. Dans chaque page : cours, TDO, algorithme, code Python, animations, exercices corrigés et quiz. Le bouton « Éditeur Python » ouvre un éditeur en ligne (Internet requis) ; tout le reste fonctionne hors ligne.</p></div>'}
 /* ===== Animations ===== */
 let steps=[],k=0,timer=null;
@@ -1347,8 +1347,8 @@ function setTheme(){const d=document.documentElement,dark=d.dataset.t?d.dataset.
 function setFont(x){const f=Math.max(80,Math.min(150,LS.get('c3f',100)+x*10));LS.set('c3f',f);document.documentElement.style.fontSize=f+'%'}
 window.onbeforeprint=()=>document.querySelectorAll('details').forEach(d=>d.open=true);
 function toolbar(){const n=$('#nav'),o=n.querySelector('.tb');if(o)o.remove();const el=document.body.classList.contains('eleve');
- n.insertAdjacentHTML('beforeend',`<span class="tb"><button class="nb" onclick="setMode()" title="Les corrigés sont visibles en mode professeur">${el?'🎓 Mode élève':'👨‍🏫 Mode professeur'}</button><button class="nb" onclick="setTheme()" title="Clair / sombre">🌓</button><button class="nb" onclick="setFont(-1)">A−</button><button class="nb" onclick="setFont(1)">A+</button><button class="nb" onclick="window.print()" title="Imprimer">🖨️</button><input id="sq" type="search" placeholder="🔎 Rechercher…" oninput="doSearch(this.value)"></span>`);
- if(!document.getElementById('sr'))n.insertAdjacentHTML('afterend','<div id="sr" class="card" style="display:none;max-width:900px;margin:8px auto"></div>')}
+ n.insertAdjacentHTML('beforeend',`<span class="tb"><button class="nb" type="button" onclick="setMode()" title="Les corrigés sont visibles en mode professeur" aria-label="Changer le mode élève ou professeur">${el?'🎓 Mode élève':'👨‍🏫 Mode professeur'}</button><button class="nb" type="button" onclick="setTheme()" title="Clair / sombre" aria-label="Basculer entre le thème clair et le thème sombre">🌓</button><button class="nb" type="button" onclick="setFont(-1)" aria-label="Réduire la taille du texte">A−</button><button class="nb" type="button" onclick="setFont(1)" aria-label="Augmenter la taille du texte">A+</button><button class="nb" type="button" onclick="window.print()" title="Imprimer" aria-label="Imprimer ou enregistrer la page en PDF">🖨️</button><label class="sr-only" for="sq">Rechercher dans le cours</label><input id="sq" type="search" placeholder="🔎 Rechercher…" oninput="doSearch(this.value)" aria-controls="sr"></span>`);
+ if(!document.getElementById('sr'))n.insertAdjacentHTML('afterend','<div id="sr" class="card" role="status" aria-live="polite" aria-atomic="true" style="display:none;max-width:900px;margin:8px auto"></div>')}
 const nz=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const tx=h=>String(h||'').replace(/<[^>]*>/g,' ').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ');
 function doSearch(q){const box=document.getElementById('sr');q=nz(q.trim());if(q.length<2){box.style.display='none';return}
@@ -1373,7 +1373,7 @@ function indexExtra(){
         <b>📈 Progression globale : ${v}/${n} chapitres vus (${pct}%) · ${exCount} exercices réussis · ${q} quiz complétés</b>
         <button class="btn s" type="button" onclick="showBilan()">🎓 Mon Bilan & Badges</button>
       </div>
-      <div class="bar2"><i style="width:${pct}%"></i></div>
+      <div class="bar2" role="progressbar" aria-label="Progression des chapitres" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${pct}" aria-valuetext="${pct} pour cent, ${v} chapitres sur ${n}"><i style="width:${pct}%"></i></div>
       <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
         <button class="btn" style="background:var(--mu);font-size:0.8rem;padding:6px 12px" type="button" onclick="if(confirm('Réinitialiser toute la progression ?')){LS.set('c3v',{});LS.set('c3p',{});LS.set('c3ex_done',{});location.reload()}">Réinitialiser</button>
       </div>
@@ -1391,22 +1391,22 @@ function toggleDrawer(force) {
   let ov = document.getElementById('drawer-overlay');
   if (!d) {
     const html = `
-      <div id="drawer-overlay" class="drawer-overlay" onclick="toggleDrawer(false)"></div>
-      <aside id="drawer" class="drawer" aria-label="Sommaire complet">
+      <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true" onclick="toggleDrawer(false)"></div>
+      <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading" aria-hidden="true" tabindex="-1" inert>
         <div class="drawer-head">
           <div class="drawer-title">
             <span style="font-size:1.6rem">📚</span>
             <div>
-              <b>Programme 3ème Sc</b>
+              <b id="drawer-heading">Programme 3ème Sc</b>
               <small>21 chapitres complets</small>
             </div>
           </div>
-          <button class="drawer-close" type="button" onclick="toggleDrawer(false)" title="Fermer (Échap)">✕</button>
+          <button class="drawer-close" type="button" onclick="toggleDrawer(false)" title="Fermer (Échap)" aria-label="Fermer le sommaire des chapitres">✕</button>
         </div>
         <div class="drawer-search">
-          <input type="text" id="drawer-filter" placeholder="🔍 Filtrer les chapitres…" oninput="filterDrawer(this.value)">
+          <label class="sr-only" for="drawer-filter">Filtrer les chapitres</label><input type="search" id="drawer-filter" placeholder="🔍 Filtrer les chapitres…" oninput="filterDrawer(this.value)" aria-controls="drawer-nav">
         </div>
-        <div class="drawer-nav">
+        <nav class="drawer-nav" id="drawer-nav" aria-label="Chapitres du cours">
           <a href="index.html" class="drawer-item ${!PG ? 'active' : ''}">
             <span class="drawer-icon">🏠</span>
             <div class="drawer-info">
@@ -1426,21 +1426,38 @@ function toggleDrawer(force) {
               </div>
             </a>`;
           }).join('')}
-        </div>
+        </nav>
       </aside>
     `;
     document.body.insertAdjacentHTML('beforeend', html);
     d = document.getElementById('drawer');
     ov = document.getElementById('drawer-overlay');
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleDrawer(false); });
+    document.addEventListener('keydown', e => {
+      if (!d.classList.contains('open')) return;
+      if (e.key === 'Escape') { e.preventDefault(); toggleDrawer(false); return; }
+      if (e.key === 'Tab') {
+        const items = [...d.querySelectorAll('a[href]:not([hidden]), button:not([disabled]), input:not([disabled])')].filter(x => x.offsetParent !== null);
+        if (!items.length) { e.preventDefault(); d.focus(); return; }
+        const first = items[0], last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
   }
   const open = force !== undefined ? force : !d.classList.contains('open');
+  if (open && !d.classList.contains('open')) window.__drawerReturnFocus = document.activeElement;
   d.classList.toggle('open', open);
   ov.classList.toggle('open', open);
+  d.setAttribute('aria-hidden', String(!open));
+  d.inert = !open;
+  ov.setAttribute('aria-hidden', String(!open));
+  document.querySelectorAll('[aria-controls="drawer"]').forEach(btn => btn.setAttribute('aria-expanded', String(open)));
   document.body.style.overflow = open ? 'hidden' : '';
   if (open) {
     const inp = document.getElementById('drawer-filter');
-    if (inp) setTimeout(() => inp.focus(), 150);
+    if (inp) setTimeout(() => inp.focus(), 0);
+  } else if (window.__drawerReturnFocus && window.__drawerReturnFocus.isConnected) {
+    window.__drawerReturnFocus.focus();
   }
 }
 
@@ -1544,22 +1561,22 @@ function showBilan() {
   ];
 
   const html = `
-    <div id="bilan-modal" class="bilan-overlay" onclick="if(event.target===this)closeBilan()">
-      <div class="bilan-card">
+    <div id="bilan-modal" class="bilan-overlay" role="presentation" onclick="if(event.target===this)closeBilan()">
+      <section class="bilan-card" role="dialog" aria-modal="true" aria-labelledby="bilan-title" tabindex="-1">
         <div class="bilan-header">
           <div style="font-size:2rem">🎓</div>
           <div>
-            <h3>Bilan d'Apprentissage & Compétences</h3>
+            <h3 id="bilan-title">Bilan d'Apprentissage & Compétences</h3>
             <p>Algorithmique et Programmation Python · Classe 3ème Sciences</p>
           </div>
-          <button class="drawer-close" type="button" onclick="closeBilan()" title="Fermer">✕</button>
+          <button class="drawer-close" type="button" onclick="closeBilan()" title="Fermer" aria-label="Fermer le bilan d’apprentissage">✕</button>
         </div>
         <div class="bilan-body">
           <div class="bilan-name-row">
-            <label><b>Nom de l’élève :</b></label>
+            <label for="bilan-name-input"><b>Nom de l’élève :</b></label>
             <input type="text" id="bilan-name-input" value="${esc(studentName)}" onchange="LS.set('c3_student_name', this.value)">
           </div>
-          <div class="bilan-stats-grid">
+          <div class="bilan-stats-grid" aria-label="Statistiques de progression">
             <div class="b-stat">
               <span class="b-val">${v}/${n}</span>
               <span class="b-lbl">Chapitres vus (${pct}%)</span>
@@ -1587,18 +1604,33 @@ function showBilan() {
           </div>
         </div>
         <div class="bilan-footer">
-          <button class="btn s" type="button" onclick="window.print()">🖨️ Imprimer / Sauvegarder en PDF</button>
+          <button class="btn s" type="button" onclick="window.print()" aria-label="Imprimer le bilan ou l’enregistrer en PDF">🖨️ Imprimer / Sauvegarder en PDF</button>
           <button class="btn" type="button" onclick="closeBilan()">Fermer</button>
         </div>
-      </div>
+      </section>
     </div>
   `;
   document.body.insertAdjacentHTML('beforeend', html);
+  const modalRoot = document.getElementById("bilan-modal");
+  window.__bilanReturnFocus = document.activeElement;
+  const dialog = modalRoot.querySelector("[role=dialog]");
+  dialog.focus();
+  modalRoot.addEventListener("keydown", e => {
+    if (e.key === "Escape") { e.preventDefault(); closeBilan(); return; }
+    if (e.key === "Tab") {
+      const items = [...dialog.querySelectorAll("a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex=\"-1\"])")].filter(x => x.offsetParent !== null);
+      if (!items.length) { e.preventDefault(); dialog.focus(); return; }
+      const first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 }
 
 function closeBilan() {
   const m = document.getElementById('bilan-modal');
   if (m) m.remove();
+  if (window.__bilanReturnFocus && window.__bilanReturnFocus.isConnected) window.__bilanReturnFocus.focus();
 }
 
 /* 4. Enregistrement PWA / Service Worker */
