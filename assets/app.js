@@ -1191,7 +1191,39 @@ function build(c){
  h+=coursH(c);if(c.html)h+=c.html;if(c.anim)h+=`<div class="card" id="anim"></div>`;
  c.S.forEach(x=>{h+=secH(x)});
  if(c.html2)h+=c.html2;h+=retH(c);
- if(c.ex){let e='';for(let i=0;i<c.ex.length;i+=2)e+=`<h4>Exercice ${i/2+1}</h4><p>${c.ex[i]}</p><details><summary>Voir la correction</summary><pre>${esc(c.ex[i+1])}</pre></details><p class="elv">🔒 Correction réservée au mode professeur.</p>`;h+=`<div class="card"><h3>Série d’exercices corrigés</h3>${e}</div>`}
+ if(c.ex){
+  const D = (LS.get('c3ex_done',{})[c.id]) || [];
+  let e='';
+  for(let i=0;i<c.ex.length;i+=2){
+    const exNum = i/2+1;
+    const exId = 'ex_' + c.id + '_' + exNum;
+    const isDone = D.includes(exNum);
+    const savedCode = LS.get('c3ex_code_' + exId, '');
+    e += `<div class="ex-box" id="${exId}_box">
+      <div class="ex-head">
+        <h4>Exercice ${exNum}</h4>
+        <span class="ex-badge ${isDone?'ok':''}" id="${exId}_badge">${isDone?'✔ Réussi':'À faire'}</span>
+      </div>
+      <p>${c.ex[i]}</p>
+      <div class="ex-editor">
+        <div class="ex-editor-top">
+          <span>🐍 Votre solution Python :</span>
+          <button class="btn-text" type="button" onclick="resetEx('${exId}')">↺ Réinitialiser</button>
+        </div>
+        <textarea class="pyc ex-pyc" id="${exId}" spellcheck="false" placeholder="# Écrivez votre code Python ici...">${esc(savedCode)}</textarea>
+        <div class="ex-actions">
+          <button class="btn s" type="button" onclick="runEx('${c.id}', ${exNum}, '${exId}')">▶ Tester ma solution</button>
+          <button class="btn" type="button" onclick="hintEx('${c.id}', ${exNum}, '${exId}')">💡 Indice</button>
+          <a class="btn s" target="_blank" rel="noopener" href="${EDI}">Éditeur en ligne</a>
+        </div>
+        <pre class="out ex-out" id="${exId}_out" style="display:none"></pre>
+      </div>
+      <details><summary>Voir la correction officielle</summary><pre>${esc(c.ex[i+1])}</pre></details>
+      <p class="elv">🔒 Correction réservée au mode professeur.</p>
+    </div>`;
+  }
+  h+=`<div class="card"><h3>Série d’exercices avec auto-évaluation</h3>${e}</div>`;
+}
  if(c.q)h+=`<div class="card"><h3>Quiz</h3>${c.q.map((q,i)=>`<div class="q" data-a="${q[2]}"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<label><input type="radio" name="q${c.id}${i}" value="${j}"> ${o}</label>`).join('')}<span></span></div>`).join('')}<button class="btn s" onclick="score(this)">Corriger le quiz</button> <b class="sc"></b></div>`;
  $('#main').innerHTML=h;if(c.id==='sd')demo();if(c.id==='syn')synInit();if(c.id==='cond'||c.id==='iter')dt(c.id,[]);if(c.id==='act')actInit();if(c.id==='tab')gridInit();
  if(c.anim)setupAnim(c.anim);
@@ -1225,11 +1257,11 @@ function theme(id){const t=TH[id],lt=h=>{const n=parseInt(h.slice(1),16),m=v=>Ma
 const ID='Cours proposé par <b>Elabed Elmouldi</b> · Classe 3 Sc · A.S. 2026/2027';
 function boot(id){const i=C.findIndex(c=>c.id===id),c=C[i],T=theme(id);document.title=c.t+' – Cours 3 Sc';
  $('#hd').innerHTML=`<div class="big">${T[4]}</div><h1>${esc(c.t.replace(/^\d+\. /,''))}</h1><p>${T[5]}</p><p class="id">Chapitre ${i+1}/${C.length} · ${ID}</p>`;
- $('#nav').innerHTML=`<a class="nb" href="index.html">🏠 Index</a>${i>0?`<a class="nb" href="${pg(i-1)}" title="${esc(C[i-1].t)}">◀ Précédent</a>`:''}${i<C.length-1?`<a class="nb" href="${pg(i+1)}" title="${esc(C[i+1].t)}">Suivant ▶</a>`:''}<a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python</a>`;
+ $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres">☰ Chapitres</button><a class="nb" href="index.html">🏠 Index</a>${i>0?`<a class="nb" href="${pg(i-1)}" title="${esc(C[i-1].t)}">◀ Précédent</a>`:''}${i<C.length-1?`<a class="nb" href="${pg(i+1)}" title="${esc(C[i+1].t)}">Suivant ▶</a>`:''}<a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python</a>`;
  build(c)}
 function indexPage(){document.title='Algorithmique et programmation – 3 Sc';
  $('#hd').innerHTML=`<div class="big">🐍</div><h1>Algorithmique et programmation Python</h1><p>3ème année – Mathématiques, Sciences expérimentales, Sciences techniques · Aide pédagogique Sept. 2026</p><p class="id">${ID}</p>`;
- $('#nav').innerHTML=`<a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python en ligne</a>`;
+ $('#nav').innerHTML=`<button class="nb" type="button" onclick="toggleDrawer()" title="Sommaire des chapitres">☰ Chapitres</button><a class="nb" target="_blank" rel="noopener" href="${EDI}">▶ Éditeur Python en ligne</a>`;
  $('#main').innerHTML='<div class="card hero"><img src="assets/img/couverture.jpg" alt="Couverture du cours"><div><h3>Bienvenue</h3><p>Ce cours couvre le programme d’informatique de la 3ème année : démarche de résolution, structures de données, conditionnels, itératifs, chaînes, tableaux, modules, recherches et tris. Chaque chapitre propose cours, animations, exercices corrigés et quiz.</p></div></div><h2>Sommaire des cours</h2><div class="grid">'+C.map((c,i)=>{const T=TH[c.id];return `<a class="gc" style="--c:${T[0]};--c2:${T[3]};animation-delay:${i*.05}s" href="${pg(i)}"><span class="gi">${T[4]}</span><b>${esc(c.t)}</b><small>${T[5]}</small><em>${c.ex?c.ex.length/2:0} exercices corrigés · ${c.q?c.q.length:0} questions${(c.anim||c.S.some(s=>s.an)||c.id==='syn')?' · 🎬 animations':''}</em></a>`}).join('')+'</div><div class="card"><h3>🧠 Carte mentale du cours</h3><a href="assets/img/carte-mentale.jpg" target="_blank"><img class="inf" src="assets/img/carte-mentale.jpg" alt="Carte mentale du cours"></a><p style="font-size:.8rem">Cliquer pour agrandir. Une carte mentale détaillée est aussi proposée au début de chaque chapitre.</p></div><div class="card"><h3>📥 Ressources à télécharger</h3><ul><li><a href="ressources/livret_eleve_3sc.pdf" target="_blank">Livret de l’élève (PDF, sans corrigés)</a></li><li><a href="ressources/fiches_revision_3sc.pdf" target="_blank">Fiches de révision (PDF, 1 page par chapitre)</a></li><li><a href="ressources/fiches_TP_eleve_3sc.pdf" target="_blank">Fiches de TP (PDF, élève)</a></li></ul></div><div class="card"><h3>Comment utiliser ce cours</h3><p>Chaque chapitre est une page indépendante : suivez l’ordre proposé ou choisissez un chapitre. Dans chaque page : cours, TDO, algorithme, code Python, animations, exercices corrigés et quiz. Le bouton « Éditeur Python » ouvre un éditeur en ligne (Internet requis) ; tout le reste fonctionne hors ligne.</p></div>'}
 /* ===== Animations ===== */
 let steps=[],k=0,timer=null;
@@ -1324,6 +1356,254 @@ function doSearch(q){const box=document.getElementById('sr');q=nz(q.trim());if(q
   E.forEach(([l,t])=>{const T=tx(t),k=nz(T).indexOf(q);if(k>=0&&R.length<40)R.push(`<div><a href="${pg(i)}"><b>${esc(c.t)}</b> › ${esc(tx(l))}</a><br><small>…${esc(T.slice(Math.max(0,k-40),k+70))}…</small></div>`)})});
  box.innerHTML=R.length?`<h4>${R.length} résultat(s)</h4>`+R.join('<hr>'):'<p>Aucun résultat.</p>';box.style.display='block'}
 function saveQ(s,n){const id=document.body.dataset.ch;if(!id)return;const P=LS.get('c3p',{}),o=P[id];P[id]=[Math.max(o?o[0]:0,s),n];LS.set('c3p',P)}
-function indexExtra(){const V=LS.get('c3v',{}),P=LS.get('c3p',{});let v=0,q=0;document.querySelectorAll('.gc').forEach(a=>{const id=a.getAttribute('href').replace(/^\d+-|\.html$/g,''),em=a.querySelector('em');if(V[id]){v++;em.insertAdjacentHTML('beforeend',' · ✔ vu')}if(P[id]){q++;em.insertAdjacentHTML('beforeend',` · quiz ${P[id][0]}/${P[id][1]}`)}});const n=C.length;
- $('#main').insertAdjacentHTML('afterbegin',`<div class="card"><b>📈 Progression : ${v}/${n} chapitres vus · ${q} quiz passés</b><div class="bar2"><i style="width:${Math.round(100*v/n)}%"></i></div><button class="btn s" onclick="LS.set('c3v',{});LS.set('c3p',{});location.reload()">Réinitialiser</button></div>`)}
+function indexExtra(){
+  const V=LS.get('c3v',{}),P=LS.get('c3p',{}),D=LS.get('c3ex_done',{});
+  let v=0,q=0,exCount=0;
+  Object.values(D).forEach(arr=>exCount+=(arr||[]).length);
+  document.querySelectorAll('.gc').forEach(a=>{
+    const id=a.getAttribute('href').replace(/^\d+-|\.html$/g,''),em=a.querySelector('em');
+    if(V[id]){v++;em.insertAdjacentHTML('beforeend',' · ✔ vu')}
+    if(P[id]){q++;em.insertAdjacentHTML('beforeend',` · quiz ${P[id][0]}/${P[id][1]}`)}
+  });
+  const n=C.length;
+  const pct=Math.round(100*v/n);
+  $('#main').insertAdjacentHTML('afterbegin',`
+    <div class="card progression-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <b>📈 Progression globale : ${v}/${n} chapitres vus (${pct}%) · ${exCount} exercices réussis · ${q} quiz complétés</b>
+        <button class="btn s" type="button" onclick="showBilan()">🎓 Mon Bilan & Badges</button>
+      </div>
+      <div class="bar2"><i style="width:${pct}%"></i></div>
+      <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+        <button class="btn" style="background:var(--mu);font-size:0.8rem;padding:6px 12px" type="button" onclick="if(confirm('Réinitialiser toute la progression ?')){LS.set('c3v',{});LS.set('c3p',{});LS.set('c3ex_done',{});location.reload()}">Réinitialiser</button>
+      </div>
+    </div>
+  `);
+}
 initPrefs();if(PG){boot(PG);const V=LS.get('c3v',{});V[PG]=1;LS.set('c3v',V)}else{indexPage();indexExtra()}toolbar();
+
+
+/* ==================== NOUVELLES FONCTIONNALITÉS 2026 ==================== */
+
+/* 1. Menu Latéral (Drawer) */
+function toggleDrawer(force) {
+  let d = document.getElementById('drawer');
+  let ov = document.getElementById('drawer-overlay');
+  if (!d) {
+    const html = `
+      <div id="drawer-overlay" class="drawer-overlay" onclick="toggleDrawer(false)"></div>
+      <aside id="drawer" class="drawer" aria-label="Sommaire complet">
+        <div class="drawer-head">
+          <div class="drawer-title">
+            <span style="font-size:1.6rem">📚</span>
+            <div>
+              <b>Programme 3ème Sc</b>
+              <small>21 chapitres complets</small>
+            </div>
+          </div>
+          <button class="drawer-close" type="button" onclick="toggleDrawer(false)" title="Fermer (Échap)">✕</button>
+        </div>
+        <div class="drawer-search">
+          <input type="text" id="drawer-filter" placeholder="🔍 Filtrer les chapitres…" oninput="filterDrawer(this.value)">
+        </div>
+        <div class="drawer-nav">
+          <a href="index.html" class="drawer-item ${!PG ? 'active' : ''}">
+            <span class="drawer-icon">🏠</span>
+            <div class="drawer-info">
+              <b>Page d'accueil & Sommaire</b>
+              <small>Présentation, progression et ressources</small>
+            </div>
+          </a>
+          ${C.map((c, i) => {
+            const T = TH[c.id] || [];
+            const icon = T[4] || '📄';
+            const isAct = PG === c.id;
+            return `<a href="${pg(i)}" class="drawer-item ${isAct ? 'active' : ''}" data-title="${esc(c.t.toLowerCase())}">
+              <span class="drawer-icon">${icon}</span>
+              <div class="drawer-info">
+                <b>${esc(c.t)}</b>
+                <small>${esc(T[5] || '')}</small>
+              </div>
+            </a>`;
+          }).join('')}
+        </div>
+      </aside>
+    `;
+    document.body.insertAdjacentHTML('beforeend', html);
+    d = document.getElementById('drawer');
+    ov = document.getElementById('drawer-overlay');
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleDrawer(false); });
+  }
+  const open = force !== undefined ? force : !d.classList.contains('open');
+  d.classList.toggle('open', open);
+  ov.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (open) {
+    const inp = document.getElementById('drawer-filter');
+    if (inp) setTimeout(() => inp.focus(), 150);
+  }
+}
+
+function filterDrawer(q) {
+  q = (q || '').toLowerCase().trim();
+  document.querySelectorAll('.drawer-nav .drawer-item[data-title]').forEach(el => {
+    el.style.display = (!q || el.getAttribute('data-title').includes(q)) ? 'flex' : 'none';
+  });
+}
+
+/* 2. Auto-évaluation des exercices */
+function markExDone(chId, exNum) {
+  const D = LS.get('c3ex_done', {});
+  if (!D[chId]) D[chId] = [];
+  if (!D[chId].includes(exNum)) {
+    D[chId].push(exNum);
+    LS.set('c3ex_done', D);
+  }
+}
+
+async function runEx(chId, exNum, exId) {
+  const code = (document.getElementById(exId).value || '').trim();
+  const out = document.getElementById(exId + '_out');
+  const badge = document.getElementById(exId + '_badge');
+  if (!code) {
+    out.style.display = 'block';
+    out.className = 'out ex-out';
+    out.textContent = '⚠️ Écrivez votre code Python ci-dessus avant de lancer le test.';
+    return;
+  }
+  LS.set('c3ex_code_' + exId, code);
+  out.style.display = 'block';
+  out.className = 'out ex-out';
+  out.textContent = '⏳ Exécution du code avec Python (Pyodide)...';
+  let resOut = '';
+  try {
+    const py = await loadPy();
+    py.setStdout({ batched: x => { resOut += x + '\n'; } });
+    py.setStderr({ batched: x => { resOut += x + '\n'; } });
+    py.runPython("import builtins, js\nbuiltins.input = lambda p='': (js.prompt(str(p)) or '')");
+    await py.runPythonAsync(code);
+    out.className = 'out ex-out ex-success';
+    out.textContent = (resOut ? '--- Sortie du programme ---\n' + resOut : '(Programme exécuté sans erreur, aucun affichage print)\n') + '\n✅ Exécution réussie sans erreur ! Comparez vos résultats avec la correction officielle.';
+    badge.textContent = '✔ Réussi';
+    badge.className = 'ex-badge ok';
+    markExDone(chId, exNum);
+  } catch (err) {
+    out.className = 'out ex-out ex-error';
+    out.textContent = (resOut ? resOut + '\n' : '') + '❌ Erreur Python :\n' + String(err.message || err).trim().split('\n').slice(-4).join('\n') + '\n\n💡 Conseil : Vérifiez les noms de variables, deux-points (:) ou indentations.';
+    badge.textContent = '⚠️ Erreur';
+    badge.className = 'ex-badge err';
+  }
+}
+
+function hintEx(chId, exNum, exId) {
+  const out = document.getElementById(exId + '_out');
+  out.style.display = 'block';
+  out.className = 'out ex-out';
+  const hints = [
+    '💡 Astuce : Définissez bien vos variables dans le TDO avant de coder en Python.',
+    '💡 Astuce : Testez d’abord avec des petites valeurs simples pour vérifier le comportement attendu.',
+    '💡 Astuce : N’oubliez pas de convertir les saisies avec int() ou float() si vous manipulez des nombres.',
+    '💡 Astuce : Pensez aux cas limites (valeur zéro, nombre négatif ou chaîne vide).'
+  ];
+  out.textContent = hints[(exNum + chId.length) % hints.length];
+}
+
+function resetEx(exId) {
+  const area = document.getElementById(exId);
+  if (area) area.value = '';
+  LS.set('c3ex_code_' + exId, '');
+  const out = document.getElementById(exId + '_out');
+  if (out) { out.style.display = 'none'; out.textContent = ''; }
+  const badge = document.getElementById(exId + '_badge');
+  if (badge) { badge.textContent = 'À faire'; badge.className = 'ex-badge'; }
+}
+
+/* 3. Bilan & Badges d'Apprentissage */
+function showBilan() {
+  let modal = document.getElementById('bilan-modal');
+  if (modal) modal.remove();
+  const V = LS.get('c3v', {});
+  const P = LS.get('c3p', {});
+  const D = LS.get('c3ex_done', {});
+  const v = Object.keys(V).length;
+  const q = Object.keys(P).length;
+  let exCount = 0;
+  Object.values(D).forEach(arr => exCount += (arr || []).length);
+  const totalEx = C.reduce((acc, c) => acc + (c.ex ? c.ex.length / 2 : 0), 0);
+  const n = C.length;
+  const pct = Math.round((v / n) * 100);
+  const studentName = LS.get('c3_student_name', 'Élève 3ème Sc');
+
+  const badges = [
+    { id: 'b1', name: '🐣 Premier Pas', desc: 'Avoir consulté son 1er chapitre', ok: v >= 1 },
+    { id: 'b2', name: '🐍 Apprenti Python', desc: 'Avoir validé au moins 5 chapitres', ok: v >= 5 },
+    { id: 'b3', name: '⚙️ Développeur Actif', desc: 'Avoir testé au moins 5 exercices', ok: exCount >= 5 },
+    { id: 'b4', name: '🎯 As des Quiz', desc: 'Avoir réussi au moins 5 quiz', ok: q >= 5 },
+    { id: 'b5', name: '🏆 Maître de l’Algorithmique', desc: 'Avoir complété au moins 15 chapitres', ok: v >= 15 },
+    { id: 'b6', name: '🎓 Expert 3ème Sciences', desc: 'Avoir exploré la totalité du programme (21/21)', ok: v >= 21 }
+  ];
+
+  const html = `
+    <div id="bilan-modal" class="bilan-overlay" onclick="if(event.target===this)closeBilan()">
+      <div class="bilan-card">
+        <div class="bilan-header">
+          <div style="font-size:2rem">🎓</div>
+          <div>
+            <h3>Bilan d'Apprentissage & Compétences</h3>
+            <p>Algorithmique et Programmation Python · Classe 3ème Sciences</p>
+          </div>
+          <button class="drawer-close" type="button" onclick="closeBilan()" title="Fermer">✕</button>
+        </div>
+        <div class="bilan-body">
+          <div class="bilan-name-row">
+            <label><b>Nom de l’élève :</b></label>
+            <input type="text" id="bilan-name-input" value="${esc(studentName)}" onchange="LS.set('c3_student_name', this.value)">
+          </div>
+          <div class="bilan-stats-grid">
+            <div class="b-stat">
+              <span class="b-val">${v}/${n}</span>
+              <span class="b-lbl">Chapitres vus (${pct}%)</span>
+            </div>
+            <div class="b-stat">
+              <span class="b-val">${exCount}/${totalEx}</span>
+              <span class="b-lbl">Exercices réussis</span>
+            </div>
+            <div class="b-stat">
+              <span class="b-val">${q}/${n}</span>
+              <span class="b-lbl">Quiz passés</span>
+            </div>
+          </div>
+          <h4 style="margin:10px 0 6px">🏅 Badges & Trophées débloqués</h4>
+          <div class="badges-grid">
+            ${badges.map(b => `
+              <div class="badge-item ${b.ok ? 'unlocked' : 'locked'}">
+                <span class="badge-status">${b.ok ? '✔' : '🔒'}</span>
+                <div>
+                  <b>${b.name}</b>
+                  <small>${b.desc}</small>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="bilan-footer">
+          <button class="btn s" type="button" onclick="window.print()">🖨️ Imprimer / Sauvegarder en PDF</button>
+          <button class="btn" type="button" onclick="closeBilan()">Fermer</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', html);
+}
+
+function closeBilan() {
+  const m = document.getElementById('bilan-modal');
+  if (m) m.remove();
+}
+
+/* 4. Enregistrement PWA / Service Worker */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
