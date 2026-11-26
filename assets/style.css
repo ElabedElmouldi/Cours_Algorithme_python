@@ -1422,3 +1422,22 @@ footer {
     display: none !important;
   }
 }
+
+
+/* Accessibilité : liens d’évitement, focus clavier net, contrastes renforcés */
+.skip-link { position: fixed; z-index: 2000; top: 10px; left: 10px; transform: translateY(-160%); padding: 10px 16px; background: #0f172a; color: #fff; border: 2px solid #fff; border-radius: 8px; font-weight: 700; }
+.skip-link:focus { transform: translateY(0); outline: 3px solid #fbbf24; outline-offset: 3px; }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible { outline: 3px solid #0b63ce !important; outline-offset: 3px !important; box-shadow: 0 0 0 5px #fff !important; }
+@media (prefers-color-scheme: dark) { :root:not([data-t="light"]) :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible { outline-color: #93c5fd !important; box-shadow: 0 0 0 5px #090d16 !important; } }
+:root { --mu: #475569; }
+@media (prefers-color-scheme: dark) { :root:not([data-t="light"]) { --mu: #cbd5e1; } }
+html[data-t="dark"] { --mu: #cbd5e1; }
+.btn { background: #8a4b08; color: #fff; }
+.btn:hover { background: #713b05; }
+.btn.s { background: #1d4ed8; color: #fff; }
+.btn.s:hover { background: #1e40af; }
+h4 { color: var(--tx-soft); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
