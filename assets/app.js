@@ -1187,17 +1187,113 @@ function demo(){const f=()=>{const a=Math.trunc(+$('#da').value),b=Math.trunc(+$
 const $=s=>document.querySelector(s);
 
 const DIAGRAMS = {"dem": {"title": "Le cycle méthodique de résolution en 4 étapes", "desc": "De la compréhension initiale de l’énoncé jusqu’au programme Python testé : la validation permet de détecter les erreurs et d’ajuster l’algorithme.", "svg": "<svg viewBox=\"0 0 945 265\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Démarche de résolution d'un problème\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<defs>\n  <marker id=\"arr\" markerWidth=\"8\" markerHeight=\"6\" refX=\"7\" refY=\"3\" orient=\"auto\"><polygon points=\"0 0, 8 3, 0 6\" fill=\"var(--pr,#2563eb)\"/></marker>\n  <marker id=\"arr-back\" markerWidth=\"8\" markerHeight=\"6\" refX=\"1\" refY=\"3\" orient=\"auto\"><polygon points=\"8 0, 0 3, 8 6\" fill=\"var(--ok,#10b981)\"/></marker>\n</defs>\n<rect x=\"15\" y=\"40\" width=\"200\" height=\"150\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr,#2563eb)\" stroke-width=\"2\"/>\n<rect x=\"15\" y=\"40\" width=\"200\" height=\"36\" rx=\"12\" fill=\"var(--pr-soft,rgba(37,99,235,0.1))\"/>\n<text x=\"115\" y=\"64\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr,#2563eb)\">1. ANALYSE &amp; ÉNONCÉ</text>\n<text x=\"115\" y=\"105\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Comprendre le problème</text>\n<text x=\"115\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Données (entrées)</text>\n<text x=\"115\" y=\"145\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Résultats (sorties)</text>\n<text x=\"115\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Conditions &amp; contraintes</text>\n\n<line x1=\"215\" y1=\"115\" x2=\"250\" y2=\"115\" stroke=\"var(--pr,#2563eb)\" stroke-width=\"2.5\" marker-end=\"url(#arr)\"/>\n\n<rect x=\"255\" y=\"40\" width=\"200\" height=\"150\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--ac,#f59e0b)\" stroke-width=\"2\"/>\n<rect x=\"255\" y=\"40\" width=\"200\" height=\"36\" rx=\"12\" fill=\"var(--ac-soft,rgba(245,158,11,0.12))\"/>\n<text x=\"355\" y=\"64\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--ac,#f59e0b)\">2. SPÉCIFICATION</text>\n<text x=\"355\" y=\"105\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">TDO &amp; Algorithme</text>\n<text x=\"355\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Objets &amp; types (TDO)</text>\n<text x=\"355\" y=\"145\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Début ... Fin</text>\n<text x=\"355\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Enchaînement logique</text>\n\n<line x1=\"455\" y1=\"115\" x2=\"490\" y2=\"115\" stroke=\"var(--pr,#2563eb)\" stroke-width=\"2.5\" marker-end=\"url(#arr)\"/>\n\n<rect x=\"495\" y=\"40\" width=\"200\" height=\"150\" rx=\"12\" fill=\"var(--card)\" stroke=\"#8b5cf6\" stroke-width=\"2\"/>\n<rect x=\"495\" y=\"40\" width=\"200\" height=\"36\" rx=\"12\" fill=\"rgba(139,92,246,0.12)\"/>\n<text x=\"595\" y=\"64\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"#8b5cf6\">3. TRADUCTION PYTHON</text>\n<text x=\"595\" y=\"105\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Codage &amp; Syntaxe</text>\n<text x=\"595\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• input() / print()</text>\n<text x=\"595\" y=\"145\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Variables, boucles, tests</text>\n<text x=\"595\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Indentations strictes</text>\n\n<line x1=\"695\" y1=\"115\" x2=\"730\" y2=\"115\" stroke=\"var(--pr,#2563eb)\" stroke-width=\"2.5\" marker-end=\"url(#arr)\"/>\n\n<rect x=\"735\" y=\"40\" width=\"195\" height=\"150\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--ok,#10b981)\" stroke-width=\"2\"/>\n<rect x=\"735\" y=\"40\" width=\"195\" height=\"36\" rx=\"12\" fill=\"var(--ok-soft,rgba(16,185,129,0.12))\"/>\n<text x=\"832\" y=\"64\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--ok,#10b981)\">4. VALIDATION &amp; TESTS</text>\n<text x=\"832\" y=\"105\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Contrôle de conformité</text>\n<text x=\"832\" y=\"125\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Jeux d’essais variés</text>\n<text x=\"832\" y=\"145\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Cas particuliers &amp; limites</text>\n<text x=\"832\" y=\"165\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">• Débogage &amp; optimisation</text>\n\n<path d=\"M 832 190 C 832 235, 115 235, 115 190\" fill=\"none\" stroke=\"var(--ok,#10b981)\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/>\n<text x=\"475\" y=\"248\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ok,#10b981)\">↺ Rétroaction : si un test échoue, affiner l'analyse ou corriger l'algorithme</text>\n</svg>"}, "sd": {"title": "Anatomie mémoire et classification des types", "desc": "Une variable modifie son contenu au fil de l’exécution tandis qu’une constante reste figée. Les types simples stockent une valeur isolée, les types composés assemblent des séquences.", "svg": "<svg viewBox=\"0 0 945 305\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Structures de données\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"30\" width=\"420\" height=\"260\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr,#2563eb)\" stroke-width=\"1.8\"/>\n<text x=\"225\" y=\"60\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr,#2563eb)\">📦 Variable vs Constante en mémoire</text>\n\n<rect x=\"35\" y=\"80\" width=\"180\" height=\"190\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"125\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">VARIABLE : r</text>\n<rect x=\"55\" y=\"120\" width=\"140\" height=\"40\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--pr)\"/>\n<text x=\"125\" y=\"145\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"15\" fill=\"var(--pr)\">5.0 ➔ 7.5</text>\n<text x=\"125\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Type : float (Réel)</text>\n<text x=\"125\" y=\"200\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Rôle : Rayon modifiable</text>\n<text x=\"125\" y=\"235\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"600\" fill=\"var(--ok)\">✓ Valeur réinscriptible</text>\n\n<rect x=\"235\" y=\"80\" width=\"180\" height=\"190\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"325\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">CONSTANTE : PI</text>\n<rect x=\"255\" y=\"120\" width=\"140\" height=\"40\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--ac)\"/>\n<text x=\"325\" y=\"145\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"15\" fill=\"var(--ac)\">3.14</text>\n<text x=\"325\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Type : float (Réel)</text>\n<text x=\"325\" y=\"200\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Rôle : Valeur fixe π</text>\n<text x=\"325\" y=\"235\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"600\" fill=\"var(--danger,#ef4444)\">🔒 Valeur non modifiable</text>\n\n<rect x=\"465\" y=\"30\" width=\"465\" height=\"260\" rx=\"12\" fill=\"var(--card)\" stroke=\"#8b5cf6\" stroke-width=\"1.8\"/>\n<text x=\"697\" y=\"60\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"#8b5cf6\">🗂️ Panorama des types de données</text>\n\n<rect x=\"485\" y=\"80\" width=\"205\" height=\"190\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"587\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Scalaires (Élémentaires)</text>\n<text x=\"500\" y=\"135\" font-size=\"11\" fill=\"var(--tx)\">• <b>Entier</b> (<code>int</code>) : 5, -12</text>\n<text x=\"500\" y=\"160\" font-size=\"11\" fill=\"var(--tx)\">• <b>Réel</b> (<code>float</code>) : 3.14, 0.5</text>\n<text x=\"500\" y=\"185\" font-size=\"11\" fill=\"var(--tx)\">• <b>Booléen</b> (<code>bool</code>) : True, False</text>\n<text x=\"500\" y=\"210\" font-size=\"11\" fill=\"var(--tx)\">• <b>Caractère</b> : 'a', 'Z', '9'</text>\n<text x=\"500\" y=\"245\" font-size=\"10\" fill=\"var(--mu)\">1 seule valeur par case</text>\n\n<rect x=\"705\" y=\"80\" width=\"210\" height=\"190\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"810\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Composés (Structurés)</text>\n<text x=\"720\" y=\"135\" font-size=\"11\" fill=\"var(--tx)\">• <b>Chaîne</b> (<code>str</code>) : \"Python\"</text>\n<text x=\"735\" y=\"152\" font-size=\"10\" fill=\"var(--tx-soft)\">Séquence de caractères</text>\n<text x=\"720\" y=\"177\" font-size=\"11\" fill=\"var(--tx)\">• <b>Tableau</b> (<code>array/list</code>) :</text>\n<text x=\"735\" y=\"195\" font-size=\"10\" fill=\"var(--tx-soft)\">T = [10, 20, 30] ordonné</text>\n<text x=\"720\" y=\"222\" font-size=\"11\" fill=\"var(--tx)\">• Opérateurs : <code>//</code> (DIV), <code>%</code> (MOD)</text>\n<text x=\"720\" y=\"245\" font-size=\"10\" fill=\"var(--mu)\">Conteneurs de valeurs indicées</text>\n</svg>"}, "mod": {"title": "Principe fondamental : Fonction vs Procédure", "desc": "La fonction transforme des entrées en une valeur retournée (return). La procédure effectue une tâche visible ou une modification sans retourner de valeur calculée.", "svg": "<svg viewBox=\"0 0 945 280\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Modularité : Fonction et Procédure\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<defs><marker id=\"arr-m\" markerWidth=\"8\" markerHeight=\"6\" refX=\"7\" refY=\"3\" orient=\"auto\"><polygon points=\"0 0, 8 3, 0 6\" fill=\"var(--pr)\"/></marker></defs>\n<rect x=\"15\" y=\"30\" width=\"440\" height=\"230\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"2\"/>\n<text x=\"235\" y=\"60\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">⚙️ FONCTION (Calcule et retourne une valeur)</text>\n\n<rect x=\"35\" y=\"90\" width=\"95\" height=\"60\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"82\" y=\"115\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx)\">Entrée (x)</text>\n<text x=\"82\" y=\"135\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--pr)\">ex : 7</text>\n\n<line x1=\"130\" y1=\"120\" x2=\"165\" y2=\"120\" stroke=\"var(--pr)\" stroke-width=\"2.5\" marker-end=\"url(#arr-m)\"/>\n\n<rect x=\"170\" y=\"80\" width=\"130\" height=\"80\" rx=\"8\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\"/>\n<text x=\"235\" y=\"112\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--pr)\">def carre(x):</text>\n<text x=\"235\" y=\"135\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-size=\"11\" fill=\"var(--tx)\">return x * x</text>\n\n<line x1=\"300\" y1=\"120\" x2=\"335\" y2=\"120\" stroke=\"var(--pr)\" stroke-width=\"2.5\" marker-end=\"url(#arr-m)\"/>\n\n<rect x=\"340\" y=\"90\" width=\"95\" height=\"60\" rx=\"8\" fill=\"var(--ok-soft)\" stroke=\"var(--ok)\"/>\n<text x=\"387\" y=\"115\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Résultat</text>\n<text x=\"387\" y=\"135\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ok)\">49</text>\n\n<text x=\"235\" y=\"195\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">✓ Utilisée dans une affectation ou un calcul : <code>res = carre(7)</code></text>\n<text x=\"235\" y=\"215\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Comporte obligatoirement une instruction <b>return</b></text>\n\n<rect x=\"480\" y=\"30\" width=\"450\" height=\"230\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--ac)\" stroke-width=\"2\"/>\n<text x=\"705\" y=\"60\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--ac)\">🛠️ PROCÉDURE (Exécute une action sans return)</text>\n\n<rect x=\"500\" y=\"90\" width=\"95\" height=\"60\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"547\" y=\"115\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx)\">Entrée (n)</text>\n<text x=\"547\" y=\"135\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--ac)\">ex : 5</text>\n\n<line x1=\"595\" y1=\"120\" x2=\"630\" y2=\"120\" stroke=\"var(--ac)\" stroke-width=\"2.5\" marker-end=\"url(#arr-m)\"/>\n\n<rect x=\"635\" y=\"80\" width=\"145\" height=\"80\" rx=\"8\" fill=\"var(--ac-soft)\" stroke=\"var(--ac)\"/>\n<text x=\"707\" y=\"112\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--ac)\">def etoiles(n):</text>\n<text x=\"707\" y=\"135\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-size=\"11\" fill=\"var(--tx)\">print(\"*\" * n)</text>\n\n<line x1=\"780\" y1=\"120\" x2=\"815\" y2=\"120\" stroke=\"var(--ac)\" stroke-width=\"2.5\" marker-end=\"url(#arr-m)\"/>\n\n<rect x=\"820\" y=\"90\" width=\"95\" height=\"60\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"867\" y=\"115\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx)\">Écran console</text>\n<text x=\"867\" y=\"135\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ac)\">*****</text>\n\n<text x=\"705\" y=\"195\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">✓ Appel autonome sous forme d'instruction : <code>etoiles(5)</code></text>\n<text x=\"705\" y=\"215\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Pas de valeur retournée dans une variable (aucun return)</text>\n</svg>"}, "ch": {"title": "Grille mémoire et double repérage des caractères", "desc": "Les indices positifs vont de 0 à len(ch)-1 (sens normal). Les indices négatifs vont de -1 à -len(ch) en partant de la droite. Les tranches ch[d:f] coupent de d inclus jusqu’à f exclu.", "svg": "<svg viewBox=\"0 0 945 285\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Chaînes de caractères\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"250\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🔤 Indexation double de la chaîne ch = \"ALGORITHME\" (Longueur = 10)</text>\n\n<!-- Table cells for 10 characters -->\n<text x=\"114.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">0</text><rect x=\"75\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"2\"/><text x=\"111.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">A</text><text x=\"114.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-10</text><text x=\"192.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">1</text><rect x=\"153\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"2\"/><text x=\"189.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">L</text><text x=\"192.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-9</text><text x=\"270.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">2</text><rect x=\"231\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"2\"/><text x=\"267.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">G</text><text x=\"270.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-8</text><text x=\"348.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">3</text><rect x=\"309\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"2\"/><text x=\"345.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">O</text><text x=\"348.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-7</text><text x=\"426.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">4</text><rect x=\"387\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"423.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">R</text><text x=\"426.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-6</text><text x=\"504.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">5</text><rect x=\"465\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"501.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">I</text><text x=\"504.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-5</text><text x=\"582.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">6</text><rect x=\"543\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"579.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">T</text><text x=\"582.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-4</text><text x=\"660.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">7</text><rect x=\"621\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"657.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">H</text><text x=\"660.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-3</text><text x=\"738.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">8</text><rect x=\"699\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"735.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">M</text><text x=\"738.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-2</text><text x=\"816.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--pr)\">9</text><rect x=\"777\" y=\"95\" width=\"72\" height=\"55\" rx=\"6\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"813.0\" y=\"132\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"22\" fill=\"var(--tx)\">E</text><text x=\"816.0\" y=\"172\" text-anchor=\"middle\" font-weight=\"600\" font-size=\"12\" fill=\"var(--ac)\">-1</text>\n<rect x=\"75\" y=\"195\" width=\"228\" height=\"55\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--pr)\"/>\n<text x=\"189\" y=\"218\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--pr)\">Tranche : ch[0:4] ➔ \"ALGO\"</text>\n<text x=\"189\" y=\"238\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">De l'indice 0 inclus à 4 exclu</text>\n\n<rect x=\"360\" y=\"195\" width=\"220\" height=\"55\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--ok)\"/>\n<text x=\"470\" y=\"218\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"var(--ok)\">Dernier caractère : ch[-1] ➔ 'E'</text>\n<text x=\"470\" y=\"238\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Accessible sans calculer len(ch)</text>\n\n<rect x=\"635\" y=\"195\" width=\"225\" height=\"55\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"#8b5cf6\"/>\n<text x=\"747\" y=\"218\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"700\" fill=\"#8b5cf6\">Recherche : ch.find(\"RIT\") ➔ 4</text>\n<text x=\"747\" y=\"238\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Renvoie -1 si absent</text>\n</svg>"}, "tab": {"title": "Organisation contiguë en mémoire et traitement cumulatif", "desc": "Tous les éléments d’un tableau ont le même type et sont repérés de 0 à n-1. Une simple boucle Pour permet de visiter chaque case pour sommer, filtrer ou déterminer les extremums.", "svg": "<svg viewBox=\"0 0 945 295\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Tableaux à une dimension\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"260\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">📊 Tableau T à 1 dimension : Taille n = 6 (Indices de 0 à 5)</text>\n<text x=\"170.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 0</text><rect x=\"110\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"165.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">14</text><text x=\"165.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx-soft)\">T[0]</text><text x=\"290.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 1</text><rect x=\"230\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"285.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">8</text><text x=\"285.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx-soft)\">T[1]</text><text x=\"410.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 2</text><rect x=\"350\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--ac-soft)\" stroke=\"var(--ac)\" stroke-width=\"2\"/><text x=\"405.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">35</text><text x=\"405.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Maxi</text><text x=\"530.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 3</text><rect x=\"470\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--ok-soft)\" stroke=\"var(--ok)\" stroke-width=\"2\"/><text x=\"525.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">4</text><text x=\"525.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Mini</text><text x=\"650.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 4</text><rect x=\"590\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"645.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">27</text><text x=\"645.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx-soft)\">T[4]</text><text x=\"770.0\" y=\"85\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">i = 5</text><rect x=\"710\" y=\"95\" width=\"110\" height=\"60\" rx=\"8\" fill=\"var(--card)\" stroke=\"var(--bd)\" stroke-width=\"2\"/><text x=\"765.0\" y=\"134\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-weight=\"800\" font-size=\"20\" fill=\"var(--tx)\">19</text><text x=\"765.0\" y=\"180\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx-soft)\">T[5]</text>\n<rect x=\"90\" y=\"200\" width=\"220\" height=\"60\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"200\" y=\"225\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Somme cumulée : S</text>\n<text x=\"200\" y=\"245\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--pr)\">S ← S + T[i]  (Total = 107)</text>\n\n<rect x=\"360\" y=\"200\" width=\"220\" height=\"60\" rx=\"8\" fill=\"var(--ok-soft)\" stroke=\"var(--ok)\"/>\n<text x=\"470\" y=\"225\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--ok)\">Minimum : mini = 4</text>\n<text x=\"470\" y=\"245\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">Si T[i] &lt; mini alors mini ← T[i]</text>\n\n<rect x=\"630\" y=\"200\" width=\"220\" height=\"60\" rx=\"8\" fill=\"var(--ac-soft)\" stroke=\"var(--ac)\"/>\n<text x=\"740\" y=\"225\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--ac)\">Maximum : maxi = 35</text>\n<text x=\"740\" y=\"245\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">Si T[i] &gt; maxi alors maxi ← T[i]</text>\n</svg>"}, "sel": {"title": "Aiguillage d’exécution par sélecteur unique", "desc": "Le sélecteur évalue une valeur discrète et branche directement vers le cas correspondant. La clause Sinon intercepte toutes les saisies non prévues.", "svg": "<svg viewBox=\"0 0 945 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Structure Selon\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<defs><marker id=\"arr-s\" markerWidth=\"8\" markerHeight=\"6\" refX=\"7\" refY=\"3\" orient=\"auto\"><polygon points=\"0 0, 8 3, 0 6\" fill=\"var(--pr)\"/></marker></defs>\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"270\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"45\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🔀 Structure Selon : Aiguillage conditionnel multi-branches</text>\n\n<!-- Selector diamond/box -->\n<polygon points=\"120,80 190,130 120,180 50,130\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"2\"/>\n<text x=\"120\" y=\"126\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--pr)\">Selon</text>\n<text x=\"120\" y=\"142\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"11\" fill=\"var(--tx)\">choix</text>\n\n<!-- 4 branches -->\n<line x1=\"190\" y1=\"100\" x2=\"270\" y2=\"80\" stroke=\"var(--pr)\" stroke-width=\"2\" marker-end=\"url(#arr-s)\"/>\n<text x=\"225\" y=\"80\" font-weight=\"700\" font-size=\"11\" fill=\"var(--pr)\">1</text>\n<rect x=\"275\" y=\"60\" width=\"240\" height=\"40\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"395\" y=\"85\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Traitement A (ex : Additionner)</text>\n\n<line x1=\"190\" y1=\"120\" x2=\"270\" y2=\"120\" stroke=\"var(--pr)\" stroke-width=\"2\" marker-end=\"url(#arr-s)\"/>\n<text x=\"225\" y=\"115\" font-weight=\"700\" font-size=\"11\" fill=\"var(--pr)\">2</text>\n<rect x=\"275\" y=\"105\" width=\"240\" height=\"40\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"395\" y=\"130\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Traitement B (ex : Soustraire)</text>\n\n<line x1=\"190\" y1=\"140\" x2=\"270\" y2=\"165\" stroke=\"var(--pr)\" stroke-width=\"2\" marker-end=\"url(#arr-s)\"/>\n<text x=\"225\" y=\"160\" font-weight=\"700\" font-size=\"11\" fill=\"var(--pr)\">3..5</text>\n<rect x=\"275\" y=\"150\" width=\"240\" height=\"40\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"395\" y=\"175\" text-anchor=\"middle\" font-size=\"12\" fill=\"var(--tx)\">Traitement C (ex : Intervalles)</text>\n\n<line x1=\"120\" y1=\"180\" x2=\"120\" y2=\"225\" stroke=\"var(--ac)\" stroke-width=\"2\"/>\n<line x1=\"120\" y1=\"225\" x2=\"270\" y2=\"225\" stroke=\"var(--ac)\" stroke-width=\"2\" marker-end=\"url(#arr-s)\"/>\n<text x=\"180\" y=\"218\" font-weight=\"700\" font-size=\"11\" fill=\"var(--ac)\">Sinon (Défaut)</text>\n<rect x=\"275\" y=\"205\" width=\"240\" height=\"40\" rx=\"6\" fill=\"var(--ac-soft)\" stroke=\"var(--ac)\"/>\n<text x=\"395\" y=\"230\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"600\" fill=\"var(--ac)\">Message d'erreur / Choix invalide</text>\n\n<!-- Join to End -->\n<line x1=\"515\" y1=\"80\" x2=\"620\" y2=\"140\" stroke=\"var(--ok)\" stroke-width=\"1.8\"/>\n<line x1=\"515\" y1=\"125\" x2=\"620\" y2=\"140\" stroke=\"var(--ok)\" stroke-width=\"1.8\"/>\n<line x1=\"515\" y1=\"170\" x2=\"620\" y2=\"140\" stroke=\"var(--ok)\" stroke-width=\"1.8\"/>\n<line x1=\"515\" y1=\"225\" x2=\"620\" y2=\"140\" stroke=\"var(--ok)\" stroke-width=\"1.8\"/>\n\n<rect x=\"625\" y=\"115\" width=\"270\" height=\"55\" rx=\"8\" fill=\"var(--ok-soft)\" stroke=\"var(--ok)\"/>\n<text x=\"760\" y=\"140\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--ok)\">FIN SELON ➔ Suite du programme</text>\n<text x=\"760\" y=\"157\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx-soft)\">Une seule branche est exécutée</text>\n</svg>"}, "it": {"title": "Comparatif structurel : Boucle conditionnelle initiale vs terminale", "desc": "Tant que vérifie avant d’entrer : elle peut ne jamais s’exécuter si la condition est fausse d’emblée. Répéter exécute le corps au moins une fois avant de tester la condition d’arrêt.", "svg": "<svg viewBox=\"0 0 945 300\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Répéter et Tant que\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<defs><marker id=\"arr-it\" markerWidth=\"8\" markerHeight=\"6\" refX=\"7\" refY=\"3\" orient=\"auto\"><polygon points=\"0 0, 8 3, 0 6\" fill=\"var(--pr)\"/></marker></defs>\n<rect x=\"15\" y=\"20\" width=\"445\" height=\"265\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"2\"/>\n<text x=\"237\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🔄 TANT QUE (Test AVANT)</text>\n\n<rect x=\"180\" y=\"65\" width=\"115\" height=\"30\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"237\" y=\"85\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">Départ</text>\n<line x1=\"237\" y1=\"95\" x2=\"237\" y2=\"115\" stroke=\"var(--pr)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n\n<polygon points=\"237,115 310,145 237,175 164,145\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"237\" y=\"142\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"11\" fill=\"var(--pr)\">Condition ?</text>\n<text x=\"237\" y=\"156\" text-anchor=\"middle\" font-size=\"10\" fill=\"var(--tx)\">continue si VRAI</text>\n\n<line x1=\"237\" y1=\"175\" x2=\"237\" y2=\"200\" stroke=\"var(--ok)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n<text x=\"245\" y=\"192\" font-weight=\"700\" font-size=\"10\" fill=\"var(--ok)\">Vrai</text>\n\n<rect x=\"160\" y=\"200\" width=\"155\" height=\"40\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"237\" y=\"225\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx)\">Instructions &amp; Maj</text>\n\n<path d=\"M 160 220 L 100 220 L 100 145 L 160 145\" fill=\"none\" stroke=\"var(--pr)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n\n<line x1=\"310\" y1=\"145\" x2=\"380\" y2=\"145\" stroke=\"var(--danger)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n<text x=\"335\" y=\"137\" font-weight=\"700\" font-size=\"10\" fill=\"var(--danger)\">Faux</text>\n<rect x=\"340\" y=\"180\" width=\"105\" height=\"45\" rx=\"6\" fill=\"var(--danger-soft,rgba(239,68,68,0.1))\" stroke=\"var(--danger)\"/>\n<text x=\"392\" y=\"200\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"var(--danger)\">SORTIE</text>\n<text x=\"392\" y=\"215\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--tx-soft)\">0 à N passages</text>\n\n<rect x=\"475\" y=\"20\" width=\"455\" height=\"265\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--ac)\" stroke-width=\"2\"/>\n<text x=\"702\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--ac)\">🔁 RÉPÉTER ... JUSQU’À (Test APRÈS)</text>\n\n<rect x=\"645\" y=\"65\" width=\"115\" height=\"30\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"702\" y=\"85\" text-anchor=\"middle\" font-size=\"11\" fill=\"var(--tx)\">Départ</text>\n<line x1=\"702\" y1=\"95\" x2=\"702\" y2=\"115\" stroke=\"var(--ac)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n\n<rect x=\"625\" y=\"115\" width=\"155\" height=\"40\" rx=\"6\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"702\" y=\"140\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"600\" fill=\"var(--tx)\">Instructions (Au moins 1 fois)</text>\n<line x1=\"702\" y1=\"155\" x2=\"702\" y2=\"175\" stroke=\"var(--ac)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n\n<polygon points=\"702,175 775,205 702,235 629,205\" fill=\"var(--ac-soft)\" stroke=\"var(--ac)\" stroke-width=\"1.8\"/>\n<text x=\"702\" y=\"202\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"11\" fill=\"var(--ac)\">Arrêt ?</text>\n<text x=\"702\" y=\"216\" text-anchor=\"middle\" font-size=\"10\" fill=\"var(--tx)\">stop si VRAI</text>\n\n<path d=\"M 629 205 L 565 205 L 565 135 L 620 135\" fill=\"none\" stroke=\"var(--ac)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n<text x=\"590\" y=\"195\" font-weight=\"700\" font-size=\"10\" fill=\"var(--ac)\">Faux</text>\n\n<line x1=\"775\" y1=\"205\" x2=\"840\" y2=\"205\" stroke=\"var(--ok)\" stroke-width=\"2\" marker-end=\"url(#arr-it)\"/>\n<text x=\"800\" y=\"195\" font-weight=\"700\" font-size=\"10\" fill=\"var(--ok)\">Vrai</text>\n<rect x=\"815\" y=\"220\" width=\"105\" height=\"45\" rx=\"6\" fill=\"var(--ok-soft)\" stroke=\"var(--ok)\"/>\n<text x=\"867\" y=\"240\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"700\" fill=\"var(--ok)\">SORTIE</text>\n<text x=\"867\" y=\"255\" text-anchor=\"middle\" font-size=\"9\" fill=\"var(--tx-soft)\">1 à N passages</text>\n</svg>"}, "rech": {"title": "Parcours linéaire vs Dichotomie par division binaire", "desc": "La recherche séquentielle inspecte un à un les éléments sans prérequis. La recherche dichotomique exige un tableau trié mais élimine la moitié des candidats à chaque comparaison.", "svg": "<svg viewBox=\"0 0 945 295\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Algorithmes de recherche\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"260\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"45\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🔍 Comparatif : Recherche Séquentielle vs Recherche Dichotomique</text>\n\n<rect x=\"35\" y=\"65\" width=\"875\" height=\"85\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"50\" y=\"90\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. SÉQUENTIELLE (Tableau quelconque, de gauche à droite)</text>\n<text x=\"50\" y=\"110\" font-size=\"11\" fill=\"var(--tx-soft)\">Examine T[0], puis T[1], puis T[2]... jusqu’à trouver ou atteindre la fin.</text>\n<text x=\"50\" y=\"135\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">• Coût proportionnel à n (O(n)) · Fonctionne sur tout tableau non trié</text>\n\n<rect x=\"35\" y=\"165\" width=\"875\" height=\"100\" rx=\"8\" fill=\"var(--pr-soft)\" stroke=\"var(--pr)\"/>\n<text x=\"50\" y=\"190\" font-weight=\"700\" font-size=\"12\" fill=\"var(--pr)\">2. DICHOTOMIQUE (Tableau préalablement TRIÉ obligatoire)</text>\n<text x=\"50\" y=\"212\" font-size=\"11\" fill=\"var(--tx)\">Compare x avec le Milieu = (Debut + Fin) // 2. Élimine la moitié du tableau à chaque étape !</text>\n<text x=\"50\" y=\"235\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">• Coût ultra-rapide en log₂(n) : ex. 1 000 000 éléments vérifiés en seulement 20 étapes !</text>\n<text x=\"50\" y=\"252\" font-size=\"10\" fill=\"var(--tx-soft)\">Condition d'arrêt : Debut &gt; Fin ou T[milieu] == x</text>\n</svg>"}, "tri": {"title": "Panorama comparatif des 3 méthodes de tri élémentaires", "desc": "Le tri par sélection échange le minimum trouvé, le tri à bulles fait remonter les plus grands éléments par paires adjacentes, et le tri par insertion insère chaque élément à son rang.", "svg": "<svg viewBox=\"0 0 945 295\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Méthodes de tri\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"260\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"45\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">📈 Les 3 Méthodes de Tri au Programme</text>\n\n<rect x=\"35\" y=\"65\" width=\"280\" height=\"195\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--pr)\"/>\n<text x=\"175\" y=\"95\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">Tri par Sélection</text>\n<text x=\"50\" y=\"125\" font-size=\"11\" fill=\"var(--tx)\">1. Chercher le <b>minimum</b> dans</text>\n<text x=\"65\" y=\"142\" font-size=\"11\" fill=\"var(--tx)\">la partie non triée T[i..n-1]</text>\n<text x=\"50\" y=\"167\" font-size=\"11\" fill=\"var(--tx)\">2. <b>Permuter</b> ce minimum</text>\n<text x=\"65\" y=\"184\" font-size=\"11\" fill=\"var(--tx)\">avec l'élément T[i]</text>\n<text x=\"50\" y=\"215\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Nombre d'échanges réduit</text>\n<text x=\"50\" y=\"235\" font-size=\"10\" fill=\"var(--tx-soft)\">Complexité : O(n²)</text>\n\n<rect x=\"332\" y=\"65\" width=\"280\" height=\"195\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--ac)\"/>\n<text x=\"472\" y=\"95\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--ac)\">Tri à Bulles</text>\n<text x=\"347\" y=\"125\" font-size=\"11\" fill=\"var(--tx)\">1. Comparer chaque couple</text>\n<text x=\"362\" y=\"142\" font-size=\"11\" fill=\"var(--tx)\">adjacent <code>T[j]</code> et <code>T[j+1]</code></text>\n<text x=\"347\" y=\"167\" font-size=\"11\" fill=\"var(--tx)\">2. <b>Échanger</b> s'ils sont dans</text>\n<text x=\"362\" y=\"184\" font-size=\"11\" fill=\"var(--tx)\">le mauvais ordre</text>\n<text x=\"347\" y=\"215\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Les max montent comme des bulles</text>\n<text x=\"347\" y=\"235\" font-size=\"10\" fill=\"var(--tx-soft)\">Optimisable avec indicateur permut</text>\n\n<rect x=\"630\" y=\"65\" width=\"280\" height=\"195\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--ok)\"/>\n<text x=\"770\" y=\"95\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--ok)\">Tri par Insertion</text>\n<text x=\"645\" y=\"125\" font-size=\"11\" fill=\"var(--tx)\">1. Considérer T[0] comme trié</text>\n<text x=\"645\" y=\"150\" font-size=\"11\" fill=\"var(--tx)\">2. Prendre T[i] et le faire</text>\n<text x=\"660\" y=\"167\" font-size=\"11\" fill=\"var(--tx)\"><b>glisser</b> à sa place exacte</text>\n<text x=\"645\" y=\"195\" font-size=\"11\" fill=\"var(--tx)\">3. Décaler les plus grands</text>\n<text x=\"645\" y=\"220\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Analogie du jeu de cartes</text>\n<text x=\"645\" y=\"238\" font-size=\"10\" fill=\"var(--tx-soft)\">Très efficace si presque trié</text>\n</svg>"}, "cond": {"title": "Formes alternative et imbriquée du Si", "desc": "Le branchement conditionnel sélectionne les instructions à exécuter selon l’évaluation d’expressions booléennes (VRAI ou FAUX).", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Traitements conditionnels\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">⚖️ Traitements Conditionnels : Si ... Alors ... Sinon</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"102\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Si Simple (Forme réduite)</text>\n<text x=\"60\" y=\"130\" font-size=\"11\" fill=\"var(--tx)\">Si <i>condition</i> Alors</text>\n<text x=\"80\" y=\"150\" font-size=\"11\" fill=\"var(--tx-soft)\">Traitement exécuté si VRAI</text>\n<text x=\"60\" y=\"175\" font-size=\"11\" fill=\"var(--tx)\">Fin Si</text>\n<text x=\"60\" y=\"205\" font-size=\"10\" fill=\"var(--mu)\">Rien n'est fait si FAUX</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--pr)\"/>\n<text x=\"470\" y=\"102\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--pr)\">Si Complet (Forme alternative)</text>\n<text x=\"355\" y=\"130\" font-size=\"11\" fill=\"var(--tx)\">Si <i>condition</i> Alors : bloc Vrai</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx)\">Sinon : bloc Faux</text>\n<text x=\"355\" y=\"180\" font-size=\"11\" fill=\"var(--tx)\">Fin Si</text>\n<text x=\"355\" y=\"205\" font-size=\"10\" fill=\"var(--ok)\">Exactement 1 des 2 blocs exécuté</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--ac)\"/>\n<text x=\"767\" y=\"102\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--ac)\">Si Imbriqués (if / elif / else)</text>\n<text x=\"650\" y=\"130\" font-size=\"11\" fill=\"var(--tx)\">Si cond1 Alors : bloc 1</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx)\">Sinon Si cond2 Alors : bloc 2</text>\n<text x=\"650\" y=\"180\" font-size=\"11\" fill=\"var(--tx)\">Sinon : bloc par défaut</text>\n<text x=\"650\" y=\"205\" font-size=\"10\" fill=\"var(--ac)\">Tests en cascade ordonnée</text>\n</svg>"}, "iter": {"title": "Mécanique de la boucle Pour à compteur prédéterminé", "desc": "Quand le nombre d’itérations est connu avant d’entamer la répétition, la boucle Pour (for in range en Python) gère automatiquement l’initialisation, l’incrémentation et l’arrêt.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Traitements itératifs\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🔁 Traitements Itératifs : Boucle Pour (Bornée)</text>\n<rect x=\"50\" y=\"75\" width=\"380\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--pr)\"/>\n<text x=\"240\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--pr)\">En Algorithme</text>\n<text x=\"70\" y=\"135\" font-size=\"12\" fill=\"var(--tx)\"><b>Pour</b> i <b>de</b> 0 <b>à</b> n-1 [pas=1] <b>faire</b></text>\n<text x=\"95\" y=\"160\" font-size=\"11\" fill=\"var(--tx-soft)\">Traitements répétés avec indice i</text>\n<text x=\"70\" y=\"185\" font-size=\"12\" fill=\"var(--tx)\"><b>Fin Pour</b></text>\n<text x=\"70\" y=\"208\" font-size=\"11\" fill=\"var(--ok)\">Nombre de répétitions connu à l'avance</text>\n\n<rect x=\"515\" y=\"75\" width=\"380\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--ok)\"/>\n<text x=\"705\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"13\" fill=\"var(--ok)\">En Python : for ... in range()</text>\n<text x=\"535\" y=\"135\" font-size=\"12\" fill=\"var(--tx)\"><code>for i in range(debut, fin_exclue, pas):</code></text>\n<text x=\"560\" y=\"160\" font-size=\"11\" fill=\"var(--tx-soft)\">ex : <code>range(1, 6)</code> ➔ 1, 2, 3, 4, 5</text>\n<text x=\"560\" y=\"180\" font-size=\"11\" fill=\"var(--tx-soft)\">ex : <code>range(5)</code> ➔ 0, 1, 2, 3, 4</text>\n<text x=\"535\" y=\"208\" font-size=\"11\" fill=\"var(--ok)\">Incrémentation automatique du compteur</text>\n</svg>"}, "syn": {"title": "Synthèse des 3 patrons d’architecture logique", "desc": "Tout algorithme, quelle que soit sa complexité, est une combinaison harmonieuse de séquences linéaires, d’aiguillages conditionnels et de boucles répétitives.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Synthèse des structures algorithmiques\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🧭 Carte des structures algorithmiques fondamentales</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. Séquentielle</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Instructions exécutées l'une</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">après l'autre, dans l'ordre.</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Flux linéaire direct</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">2. Conditionnelle</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Choix entre chemins alternatifs</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">selon des tests booléens.</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Si ... Sinon / Selon</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">3. Répétitive</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Répétition d'un bloc selon</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">un compteur ou une condition.</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Pour / Tant que / Répéter</text>\n</svg>"}, "synt": {"title": "🧩 Méthodologie de Résolution des Exercices de Synthèse", "desc": "Une progression par paliers pour consolider les notions avant d’aborder les sujets d’examen complexes.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"🧩 Méthodologie de Résolution des Exercices de Synthèse\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🧩 Méthodologie de Résolution des Exercices de Synthèse</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Niveau 1 : Fondations</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Maîtriser TDO et types</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Traduire en Python direct</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Jeux de tests simples</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Niveau 2 : Algorithmes</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Boucles imbriquées</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Tranches et tableaux</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Détection d'extremums</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Niveau 3 : Problèmes</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Décomposition en modules</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Vérifications avancées</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Optimisation du code</text>\n</svg>"}, "act": {"title": "🎮 Cycle des Activités Pratiques", "desc": "Apprendre la programmation par la pratique interactive et le retour d’exécution immédiat.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"🎮 Cycle des Activités Pratiques\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🎮 Cycle des Activités Pratiques</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. Observer & Tester</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Exécuter les exemples</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Observer les sorties</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Modifier les paramètres</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">2. Diagnostiquer</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Repérer les anomalies</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Tester des cas limites</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Tracer pas à pas</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">3. Valider le code</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Valider les exercices</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Enrichir sa progression</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Obtenir les badges</text>\n</svg>"}, "proj": {"title": "🚀 Démarche de Réalisation de Mini-Projets", "desc": "Concevoir une application complète en assemblant fonctions, structures de données et gestion d'erreurs.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"🚀 Démarche de Réalisation de Mini-Projets\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">🚀 Démarche de Réalisation de Mini-Projets</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. Spécification</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Besoins fonctionnels</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Découpage en modules</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Choix des structures</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">2. Développement</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Codage progressif</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Tests unitaires</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Interface claire</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">3. Finalisation</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Validation globale</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Documentation du code</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Démonstration</text>\n</svg>"}, "err": {"title": "⚠️ Les 3 Familles d'Erreurs en Python", "desc": "Comprendre les messages d'erreur permet de déboguer efficacement et de fiabiliser son programme.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"⚠️ Les 3 Familles d'Erreurs en Python\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">⚠️ Les 3 Familles d'Erreurs en Python</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. SyntaxError</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Indentation manquante</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Deux-points ':' oubliés</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Parenthèse non fermée</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">2. Exceptions d'exécution</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">NameError (variable inconnue)</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">TypeError (opérateurs incompatibles)</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">IndexError (hors limites)</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">3. Erreurs logiques</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Boucle infinie</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Condition mal formulée</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Résultat incorrect</text>\n</svg>"}, "eval": {"title": "📝 Critères d'Évaluation d'un Devoir d'Algorithmique", "desc": "Grille standard d'évaluation garantissant rigueur conceptuelle et conformité syntaxique.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"📝 Critères d'Évaluation d'un Devoir d'Algorithmique\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">📝 Critères d'Évaluation d'un Devoir d'Algorithmique</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">1. Analyse & TDO (30%)</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Identification des données</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Choix exact des types</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">Rôle précis de chaque objet</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">2. Algorithme (40%)</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Logique de résolution</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Bonne structure de boucle</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">Modularité respectée</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">3. Code Python (30%)</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">Syntaxe et indentations</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">Entrées / sorties soignées</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">Tests et exactitude</text>\n</svg>"}, "lib": {"title": "📚 Boîte à Outils des Fonctions Prédéfinies", "desc": "Répertoire synthétique des fonctions et méthodes intégrées les plus sollicitées dans les devoirs.", "svg": "<svg viewBox=\"0 0 945 275\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"📚 Boîte à Outils des Fonctions Prédéfinies\" style=\"width:100%;height:auto;display:block;font-family:var(--font-main,system-ui,sans-serif)\">\n<rect x=\"15\" y=\"20\" width=\"915\" height=\"240\" rx=\"12\" fill=\"var(--card)\" stroke=\"var(--pr)\" stroke-width=\"1.8\"/>\n<text x=\"472\" y=\"48\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"14\" fill=\"var(--pr)\">📚 Boîte à Outils des Fonctions Prédéfinies</text>\n<rect x=\"45\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"175\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Chaînes (str)</text>\n<text x=\"60\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">len(ch) · ch.find(s)</text>\n<text x=\"60\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">ch.upper() · ch.lower()</text>\n<text x=\"60\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--pr)\">ch.count(s) · ch.strip()</text>\n\n<rect x=\"340\" y=\"75\" width=\"260\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"470\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Nombres & Math</text>\n<text x=\"355\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">abs(x) · pow(x, n)</text>\n<text x=\"355\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">import math · math.sqrt(x)</text>\n<text x=\"355\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ac)\">divmod(a, b) · round(x, 2)</text>\n\n<rect x=\"635\" y=\"75\" width=\"265\" height=\"150\" rx=\"8\" fill=\"var(--bg-subtle)\" stroke=\"var(--bd)\"/>\n<text x=\"767\" y=\"105\" text-anchor=\"middle\" font-weight=\"700\" font-size=\"12\" fill=\"var(--tx)\">Tableaux & Listes</text>\n<text x=\"650\" y=\"135\" font-size=\"11\" fill=\"var(--tx-soft)\">len(T) · sum(T)</text>\n<text x=\"650\" y=\"155\" font-size=\"11\" fill=\"var(--tx-soft)\">min(T) · max(T)</text>\n<text x=\"650\" y=\"195\" font-size=\"11\" font-weight=\"600\" fill=\"var(--ok)\">T.append(x) · T.sort()</text>\n</svg>"}};
+const SCHEMA_STEPS = {
+  tri: [
+    { t: '1. Tri par sélection', desc: '<strong>Principe :</strong> À chaque passe <code>i</code>, on cherche l\'indice du <code>minimum</code> dans la tranche non triée <code>T[i..n-1]</code>. En fin de passe, on permute ce minimum avec <code>T[i]</code> en utilisant la variable auxiliaire <code>aux</code>. C\'est le tri qui effectue le moins d\'échanges (au plus n−1).' },
+    { t: '2. Tri à bulles', desc: '<strong>Principe :</strong> On compare chaque couple adjacent <code>T[j]</code> et <code>T[j+1]</code>. S\'ils sont dans le désordre, on les échange immédiatement avec <code>aux</code>. À chaque passe, le plus grand élément restant « remonte » vers la fin du tableau comme une bulle d\'air.' },
+    { t: '3. Tri par insertion', desc: '<strong>Principe :</strong> Comme un joueur qui range ses cartes en main : on extrait l\'élément <code>cle = T[i]</code>, on décale vers la droite tous les éléments déjà triés plus grands que <code>cle</code>, puis on insère la clé à l\'emplacement libéré. Très rapide sur un tableau déjà presque trié.' }
+  ],
+  dem: [
+    { t: '1. Comprendre l\'énoncé', desc: 'Souligner les verbes d\'action (saisir, calculer, afficher) et identifier les contraintes sur les données (domaines, cas limites).' },
+    { t: '2. Analyser', desc: 'Dresser le tableau Résultats / Données / Traitements pour identifier les objets et types à déclarer dans le TDO.' },
+    { t: '3. Concevoir l\'algorithme', desc: 'Organiser logiquement la séquence d\'instructions : saisie contrôlée, calculs, conditions et boucles.' },
+    { t: '4. Traduire & Valider', desc: 'Coder en Python et tester avec des jeux d\'essais pour valider chaque branche de test.' }
+  ],
+  tab: [
+    { t: '1. Déclaration & Structure', desc: 'Un tableau est une suite contiguë de n éléments de même type, repérés par un indice allant de <code>0</code> à <code>n-1</code>.' },
+    { t: '2. Parcours avec Pour', desc: 'La boucle <code>Pour i de 0 à n-1</code> permet de lire, modifier ou afficher chaque élément <code>T[i]</code> de manière séquentielle.' },
+    { t: '3. Traitements classiques', desc: 'Calcul de somme, moyenne, recherche du maximum/minimum et comptage d\'occurrences.' }
+  ],
+  rech: [
+    { t: '1. Recherche séquentielle', desc: 'Applicable à tout tableau (trié ou non). On examine les cases les unes après les autres jusqu\'à trouver l\'élément ou atteindre la fin.' },
+    { t: '2. Recherche dichotomique', desc: 'Exige un tableau <strong>obligatoirement trié</strong>. On compare avec l\'élément médian pour éliminer la moitié du tableau à chaque étape.' }
+  ],
+  cond: [
+    { t: '1. Alternative simple (Si..Alors)', desc: 'L\'action n\'est exécutée que si la condition logique est vraie. Si elle est fausse, le programme continue sans rien faire.' },
+    { t: '2. Alternative complète (Si..Sinon)', desc: 'Choix exclusif entre deux blocs d\'actions selon que la condition est vraie ou fausse.' },
+    { t: '3. Choix multiple (Selon)', desc: 'Sélection d\'une branche parmi plusieurs cas possibles selon la valeur d\'un sélecteur discret.' }
+  ],
+  iter: [
+    { t: '1. Boucle Pour', desc: 'Itération déterminée : le nombre de répétitions est connu à l\'avance grâce à un compteur qui varie de la borne initiale à la borne finale.' },
+    { t: '2. Boucle Tant que', desc: 'Itération indéterminée avec condition testée au début : le corps de boucle peut ne jamais s\'exécuter si la condition est fausse dès l\'entrée.' },
+    { t: '3. Boucle Répéter..Jusqu\'à', desc: 'Itération indéterminée avec condition testée à la fin : le corps s\'exécute obligatoirement au moins une fois (idéal pour les contrôles de saisie).' }
+  ]
+};
+
+const _schemaScales = {};
+function zoomSchema(id, delta) {
+  const body = $('#schema-body-' + id);
+  if (!body) return;
+  const svg = body.querySelector('svg');
+  if (!svg) return;
+  if (delta === 0) {
+    _schemaScales[id] = 1;
+  } else {
+    _schemaScales[id] = Math.min(2.2, Math.max(0.7, (_schemaScales[id] || 1) + delta));
+  }
+  svg.style.transform = `scale(${_schemaScales[id]})`;
+  svg.style.transformOrigin = 'center top';
+  body.style.overflowX = _schemaScales[id] > 1 ? 'auto' : 'hidden';
+}
+
+function toggleExpandSchema(id) {
+  const card = $('#schema-card-' + id);
+  if (!card) return;
+  card.classList.toggle('schema-expanded');
+}
+
+function setSchemaStep(id, idx) {
+  const steps = SCHEMA_STEPS[id];
+  if (!steps || !steps[idx]) return;
+  const nav = $('#schema-nav-' + id);
+  if (nav) {
+    nav.querySelectorAll('.schema-step-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === idx);
+    });
+  }
+  const panel = $('#schema-panel-' + id);
+  if (panel) {
+    panel.innerHTML = `<div class="step-panel-hd"><strong>${esc(steps[idx].t)}</strong></div><div class="step-panel-body">${steps[idx].desc}</div>`;
+  }
+}
+
 function build(c){
  let h=`<h2>${c.t}</h2><div class="card"><p>${c.intro}</p></div>`;
  const sch = DIAGRAMS[c.id];
  if(sch){
-  h += `<div class="card schema-card" aria-label="Schéma explicatif : ${esc(sch.title)}">
+  const stepsList = SCHEMA_STEPS[c.id] || [
+    { t: 'Vue d’ensemble', desc: sch.desc }
+  ];
+  const stepsHtml = stepsList.map((st, idx) => 
+    `<button type="button" class="schema-step-btn ${idx === 0 ? 'active' : ''}" onclick="setSchemaStep('${c.id}', ${idx})" aria-label="Étape ${idx + 1} : ${esc(st.t)}">
+      <span class="step-num">${idx + 1}</span> ${esc(st.t)}
+    </button>`
+  ).join('');
+
+  h += `<div class="card schema-card" id="schema-card-${c.id}" aria-label="Schéma explicatif : ${esc(sch.title)}">
     <div class="schema-hd">
       <div class="schema-badge">💡 Schéma explicatif &amp; Synthèse visuelle</div>
       <h3>${esc(sch.title)}</h3>
+      <div class="schema-zoom-bar">
+        <span class="schema-zoom-label">🔍 Zoom accessible :</span>
+        <button type="button" class="btn-zoom" onclick="zoomSchema('${c.id}', -0.15)" title="Dézoomer" aria-label="Dézoomer">➖</button>
+        <button type="button" class="btn-zoom" onclick="zoomSchema('${c.id}', 0)" title="Ajuster (100% sans défilement)" aria-label="Ajuster 100%">100%</button>
+        <button type="button" class="btn-zoom" onclick="zoomSchema('${c.id}', 0.15)" title="Zoomer" aria-label="Zoomer">➕</button>
+        <button type="button" class="btn-zoom" onclick="toggleExpandSchema('${c.id}')" title="Agrandir / Réduire" aria-label="Agrandir en grand">⛶ Agrandir</button>
+      </div>
     </div>
-    <div class="schema-body">
+    <div class="schema-body" id="schema-body-${c.id}">
       ${sch.svg}
+    </div>
+    <div class="schema-inter-section">
+      <div class="schema-steps-nav" id="schema-nav-${c.id}">
+        <span class="nav-title">Étapes interactives au clic :</span>
+        <div class="step-btn-group">${stepsHtml}</div>
+      </div>
+      <div class="schema-step-panel" id="schema-panel-${c.id}">
+        <div class="step-panel-hd"><strong>${esc(stepsList[0].t)}</strong></div>
+        <div class="step-panel-body">${stepsList[0].desc}</div>
+      </div>
     </div>
     <p class="schema-desc">${sch.desc}</p>
   </div>`;
@@ -1287,18 +1383,149 @@ function seqSteps(a,x){const S=[],n=a.length;let i=0;
   if(i>=n||a[i]===x)break;i++;
  }
  const f=i<n;S.push({a,h:f?{[i]:'ok'}:{},v:{x,n,i,trouve:f},m:f?`✔ Trouvé à l’indice ${i}`:'✘ Valeur absente du tableau'});return S}
-function sortSteps(kind,a0){const a=[...a0],n=a.length,S=[];const ok=new Set();
- const P=(h,v,m)=>{const hh={};ok.forEach(i=>hh[i]='ok');Object.assign(hh,h);S.push({a:[...a],h:hh,v,m})};
- if(kind==='sel'){for(let i=0;i<n-1;i++){let pm=i;P({[i]:'cur'},{i,pm,j:'—'},`i=${i} : on suppose que le minimum est T[${i}]=${a[i]}`);
-   for(let j=i+1;j<n;j++){P({[pm]:'min',[j]:'cur'},{i,j,pm,'T[j]':a[j],'T[pm]':a[pm]},`Compare T[${j}]=${a[j]} avec T[pm]=${a[pm]} → ${a[j]<a[pm]?'plus petit : pm ← '+j:'on garde pm'}`);if(a[j]<a[pm])pm=j}
-   if(pm!==i){const aux=a[i];a[i]=a[pm];a[pm]=aux;P({[i]:'cur',[pm]:'min'},{i,pm,aux},`Échange T[${i}] et T[${pm}]`)}
-   ok.add(i)}ok.add(n-1)}
- else if(kind==='bul'){for(let i=n-1;i>=1;i--){for(let j=0;j<i;j++){const sw=a[j]>a[j+1];P({[j]:'cur',[j+1]:'cur'},{i,j,'T[j]':a[j],'T[j+1]':a[j+1]},`Compare T[${j}]=${a[j]} et T[${j+1}]=${a[j+1]} → ${sw?'échange':'rien'}`);
-   if(sw){const aux=a[j];a[j]=a[j+1];a[j+1]=aux;P({[j]:'min',[j+1]:'min'},{i,j,aux},'Échange effectué')}}ok.add(i)}ok.add(0)}
- else{ok.add(0);for(let i=1;i<n;i++){const cle=a[i];let j=i-1;P({[i]:'key'},{i,cle,j},`cle ← T[${i}] = ${cle}`);
-   while(j>=0&&a[j]>cle){a[j+1]=a[j];P({[j]:'cur',[j+1]:'key'},{i,cle,j,'T[j]':a[j]},`T[${j}]=${a[j]} > ${cle} : décalage vers la droite`);j--}
-   a[j+1]=cle;ok.add(i);for(let q=0;q<=i;q++)ok.add(q);P({[j+1]:'key'},{i,cle,j:j+1},`T[${j+1}] ← ${cle} (insertion)`)}}
- for(let i=0;i<n;i++)ok.add(i);P({},{},'✔ Tableau trié');return S}
+function sortSteps(kind, a0) {
+  const a = [...a0], n = a.length, S = [];
+  const ok = new Set();
+  const P = (h, roles, v, test, m) => {
+    const hh = {};
+    ok.forEach(i => hh[i] = 'ok');
+    Object.assign(hh, h);
+    S.push({ a: [...a], h: hh, roles: roles || {}, v: v || {}, test: test || null, m });
+  };
+
+  if (kind === 'sel') {
+    P({}, {}, { i: '—', j: '—', pm: '—', aux: '—' },
+      { cond: 'Initialisation', vals: `Tableau de ${n} éléments`, ok: true, act: 'Prêt pour la 1ère passe (i=0)' },
+      `Initialisation du tri par sélection sur ${n} éléments.`);
+
+    for (let i = 0; i < n - 1; i++) {
+      let pm = i;
+      P({ [i]: 'cur' }, { [i]: 'pm' }, { i, j: '—', pm, aux: '—' },
+        { cond: 'pm ← i', vals: `pm = ${i} (T[pm] = ${a[i]})`, ok: true, act: `On suppose que le minimum provisoire est à l'indice i=${i}` },
+        `Passe i = ${i} : on initialise pm ← ${i} (valeur T[${i}] = ${a[i]}).`);
+
+      for (let j = i + 1; j < n; j++) {
+        const cond = a[j] < a[pm];
+        const testInfo = {
+          cond: 'T[j] < T[pm]',
+          vals: `T[${j}] < T[${pm}] ⇔ ${a[j]} < ${a[pm]}`,
+          ok: cond,
+          act: cond ? `Nouveau minimum trouvé ! Mise à jour pm ← ${j}` : `Pas plus petit : on conserve pm = ${pm}`
+        };
+        if (cond) {
+          pm = j;
+          P({ [i]: 'cur', [pm]: 'min', [j]: 'cur' }, { [i]: 'i', [pm]: 'pm', [j]: 'j' }, { i, j, pm, aux: '—' },
+            testInfo, `j = ${j} : T[${j}]=${a[j]} < T[pm]=${a[pm]} (VRAI) → nouveau minimum à l'indice pm = ${pm}.`);
+        } else {
+          P({ [i]: 'cur', [pm]: 'min', [j]: 'cur' }, { [i]: 'i', [pm]: 'pm', [j]: 'j' }, { i, j, pm, aux: '—' },
+            testInfo, `j = ${j} : T[${j}]=${a[j]} ≥ T[pm]=${a[pm]} (FAUX) → on conserve pm = ${pm}.`);
+        }
+      }
+
+      const condEch = (pm !== i);
+      const testEch = {
+        cond: 'pm ≠ i',
+        vals: `${pm} ≠ ${i}`,
+        ok: condEch,
+        act: condEch ? `Échange nécessaire : aux ← T[${i}] ; T[${i}] ← T[${pm}] ; T[${pm}] ← aux` : `T[${i}] = ${a[i]} est déjà le minimum, aucun échange`
+      };
+      if (condEch) {
+        const aux = a[i];
+        a[i] = a[pm];
+        a[pm] = aux;
+        P({ [i]: 'min', [pm]: 'cur' }, { [i]: 'aux', [pm]: 'T[i]' }, { i, j: n - 1, pm, aux },
+          testEch, `Échange effectué avec la variable auxiliaire aux = ${aux} : T[${i}] prend ${a[i]} et T[${pm}] prend ${a[pm]}.`);
+      } else {
+        P({ [i]: 'ok' }, { [i]: 'ok' }, { i, j: n - 1, pm, aux: '—' },
+          testEch, `T[${i}] = ${a[i]} était déjà le minimum de la tranche. Aucun échange nécessaire.`);
+      }
+      ok.add(i);
+    }
+    ok.add(n - 1);
+    P({}, {}, { i: n - 1, j: '—', pm: '—', aux: '—' },
+      { cond: 'Fin du tri', vals: 'Toutes les passes terminées', ok: true, act: 'Tableau entièrement trié' },
+      '✔ Tri par sélection terminé avec succès !');
+  } else if (kind === 'bul') {
+    P({}, {}, { i: '—', j: '—', aux: '—', permute: '—' },
+      { cond: 'Initialisation', vals: `Tableau de ${n} éléments`, ok: true, act: 'Prêt pour la passe jusqu\'à i=n-1' },
+      `Initialisation du tri à bulles sur ${n} éléments.`);
+
+    for (let i = n - 1; i >= 1; i--) {
+      let permute = false;
+      for (let j = 0; j < i; j++) {
+        const cond = a[j] > a[j + 1];
+        const testInfo = {
+          cond: 'T[j] > T[j+1]',
+          vals: `T[${j}] > T[${j + 1}] ⇔ ${a[j]} > ${a[j + 1]}`,
+          ok: cond,
+          act: cond ? 'Voisins dans le désordre : échange nécessaire' : 'Voisins bien ordonnés : pas d\'échange'
+        };
+        if (cond) {
+          const aux = a[j];
+          a[j] = a[j + 1];
+          a[j + 1] = aux;
+          permute = true;
+          P({ [j]: 'min', [j + 1]: 'cur' }, { [j]: 'T[j+1]', [j + 1]: 'aux' }, { i, j, aux, permute: 'VRAI' },
+            testInfo, `j = ${j} : T[${j}]=${aux} > T[${j+1}]=${a[j]} (VRAI) → échange avec aux = ${aux} : le plus grand avance.`);
+        } else {
+          P({ [j]: 'cur', [j + 1]: 'cur' }, { [j]: 'j', [j + 1]: 'j+1' }, { i, j, aux: '—', permute: permute ? 'VRAI' : 'FAUX' },
+            testInfo, `j = ${j} : T[${j}]=${a[j]} ≤ T[${j+1}]=${a[j+1]} (FAUX) → voisins bien ordonnés.`);
+        }
+      }
+      ok.add(i);
+      P({}, { [i]: 'max' }, { i, j: i - 1, aux: '—', permute: permute ? 'VRAI' : 'FAUX' },
+        { cond: `Fin de passe i=${i}`, vals: `T[${i}] = ${a[i]}`, ok: true, act: `Le plus grand élément restant est désormais placé à l'indice i=${i}` },
+        `Fin de passe : le plus grand élément restant (${a[i]}) est fixé en position définitive à l'indice ${i}.`);
+    }
+    ok.add(0);
+    P({}, {}, { i: 0, j: '—', aux: '—', permute: 'FAUX' },
+      { cond: 'Fin du tri', vals: 'Bulles stabilisées', ok: true, act: 'Tableau entièrement trié' },
+      '✔ Tri à bulles terminé avec succès !');
+  } else {
+    ok.add(0);
+    P({ 0: 'ok' }, { 0: 'trié' }, { i: 0, j: '—', cle: '—' },
+      { cond: 'Initialisation', vals: 'T[0] est considéré trié', ok: true, act: 'On commence l\'insertion à partir de i=1' },
+      `Initialisation du tri par insertion : T[0]=${a[0]} forme la partie triée initiale.`);
+
+    for (let i = 1; i < n; i++) {
+      const cle = a[i];
+      let j = i - 1;
+      P({ [i]: 'key' }, { [i]: 'cle' }, { i, j, cle },
+        { cond: 'cle ← T[i]', vals: `cle = ${cle}`, ok: true, act: `On extrait cle = ${cle} pour l'insérer à sa place` },
+        `Passe i = ${i} : on mémorise la clé cle = T[${i}] = ${cle} et on cherche sa position dans [0..${i-1}].`);
+
+      while (j >= 0 && a[j] > cle) {
+        const testInfo = {
+          cond: '(j ≥ 0) ET (T[j] > cle)',
+          vals: `(${j} ≥ 0) ET (${a[j]} > ${cle}) ⇔ VRAI ET VRAI`,
+          ok: true,
+          act: `T[${j}]=${a[j]} > ${cle} : on décale T[${j}] vers T[${j + 1}]`
+        };
+        a[j + 1] = a[j];
+        P({ [j]: 'cur', [j + 1]: 'key' }, { [j]: 'T[j]', [j + 1]: 'décalé' }, { i, j, cle },
+          testInfo, `Décalage vers la droite : T[${j + 1}] prend la valeur ${a[j]}.`);
+        j--;
+      }
+
+      const testStop = {
+        cond: '(j ≥ 0) ET (T[j] > cle)',
+        vals: j < 0 ? `j = ${j} < 0 (condition fausse)` : `T[${j}] = ${a[j]} ≤ cle = ${cle} (condition fausse)`,
+        ok: false,
+        act: `Arrêt de la boucle Tant que : on insère cle = ${cle} à l'indice T[${j + 1}]`
+      };
+      a[j + 1] = cle;
+      for (let q = 0; q <= i; q++) ok.add(q);
+      P({ [j + 1]: 'key' }, { [j + 1]: 'cle' }, { i, j, cle },
+        testStop, `Insertion : T[${j + 1}] ← ${cle}. La tranche [0..${i}] est maintenant ordonnée.`);
+    }
+    P({}, {}, { i: n - 1, j: '—', cle: '—' },
+      { cond: 'Fin du tri', vals: 'Tous les éléments insérés', ok: true, act: 'Tableau entièrement trié' },
+      '✔ Tri par insertion terminé avec succès !');
+  }
+
+  return S;
+}
+
 function minmaxSteps(a){const S=[],n=a.length;let mx=a[0],mi=a[0],pm=0,pn=0;
  S.push({a,h:{0:'cur'},v:{maxi:mx,mini:mi,i:0},m:'Initialisation : maxi ← T[0], mini ← T[0]'});
  for(let i=1;i<n;i++){const h={[pm]:'min',[pn]:'key'};h[i]='cur';let m=`Compare T[${i}]=${a[i]}`;
@@ -1326,25 +1553,227 @@ function iterSteps(k,a,b){const S=[];const P=(v,m)=>S.push({a:[],h:{},v,m});
   while(n>1){if(n%d===0){f.push(d);n=n/d;P({n,d,facteurs:f.join('×')},`${d} divise → on note ${d}, n ← n DIV ${d} = ${n}`)}else{P({n,d,facteurs:f.join('×')||'—'},`${d} ne divise pas ${n} → d ← d+1`);d++}}
   P({n,d,facteurs:f.join('×')},`n = 1 → fin : ${a} = ${f.join(' × ')}`)}
  return S}
-function draw(){const s=steps[k];if(!s)return;const mx=Math.max(...s.a,1);
- $('#bars').innerHTML=s.a.map((v,i)=>`<div class="bar ${s.h[i]||''}" style="height:${Math.max(12,v/mx*100)}%">${v}<small>${i}</small></div>`).join('');
- $('#msg').textContent=`Étape ${k+1}/${steps.length} — ${s.m}`;
- $('#vars').innerHTML='<tr>'+Object.keys(s.v).map(x=>`<th>${x}</th>`).join('')+'</tr><tr>'+Object.values(s.v).map(x=>`<td>${x}</td>`).join('')+'</tr>'}
-function setupAnim(type){const sort=type==='tri',it=type==='it'||type==='iter';
- const sel=sort?'<option value="sel">Sélection</option><option value="bul">Bulles</option><option value="ins">Insertion</option>':type==='iter'?'<option value="som">Pour : somme de 1 à n</option><option value="chif">Tant que : nombre de chiffres</option><option value="rep">Répéter : plus petite puissance de 2 ≥ a</option>':it?'<option value="pgcd">PGCD (Euclide)</option><option value="prem">Nombre premier</option><option value="fact">Décomposition</option>':'<option value="seq">Séquentielle</option><option value="dic">Dichotomique</option><option value="mm">Maximum / minimum</option>';
- const inp=it?'a = <input id="x" type="text" value="24" style="width:70px"> b = <input id="y" type="text" value="36" style="width:70px">':(type==='rech'?'x = <input id="x" type="text" value="31" style="width:60px"> ':'')+`<input id="arr" type="text" value="${sort?'9, 4, 7, 1, 8, 3':'12, 5, 9, 31, 7'}">`;
- $('#anim').innerHTML=`<h3>Animation pas à pas</h3><div class="ctl" style="margin-top:0"><select id="alg">${sel}</select>${inp}<button class="btn s" id="go">Lancer</button></div><div class="bars" id="bars" style="${it?'display:none':''}"></div><div class="ctl" ${it?'style="margin-top:8px"':''}><button class="btn s" id="pv">◀</button><button class="btn" id="pl">▶ Lecture</button><button class="btn s" id="nx">▶|</button>Vitesse <input type="range" id="sp" min="150" max="1500" value="700"></div><div class="msg" id="msg"></div><table class="vars" id="vars"></table>`;
- const go=()=>{stop();$('#pl').textContent='▶ Lecture';const g=id=>+$('#'+id).value,al=$('#alg').value;
-  if(it){let a=Math.abs(Math.round(g('x')))||1,b=Math.abs(Math.round(g('y')));if(al==='prem'||al==='fact')a=Math.min(Math.max(a,2),5000);else if(al!=='pgcd')a=Math.min(a,1000000000);steps=iterSteps(al,a,b).slice(0,400)}
-  else{const a=$('#arr').value.split(',').map(Number).filter(v=>!isNaN(v)).slice(0,12);if(!a.length)return;
-   steps=sort?sortSteps(al,a):al==='dic'?dichoSteps(a,g('x')):al==='mm'?minmaxSteps(a):seqSteps(a,g('x'))}
-  k=0;draw()};
- const play=()=>{if(timer){stop();$('#pl').textContent='▶ Lecture';return}$('#pl').textContent='⏸ Pause';if(k>=steps.length-1)k=0;
-  timer=setInterval(()=>{if(k<steps.length-1){k++;draw()}else{stop();$('#pl').textContent='▶ Lecture'}},+$('#sp').value)};
- $('#go').onclick=go;$('#pl').onclick=play;$('#sp').onchange=()=>{if(timer){stop();play()}};
- $('#nx').onclick=()=>{if(k<steps.length-1){k++;draw()}};$('#pv').onclick=()=>{if(k>0){k--;draw()}};
- $('#alg').onchange=go;go()}
+function draw() {
+  const s = steps[k];
+  if (!s) return;
+  const mx = Math.max(...s.a, 1);
+  const barsEl = $('#bars');
+  if (barsEl) {
+    barsEl.innerHTML = s.a.map((v, i) => {
+      const role = (s.roles && s.roles[i]) ? `<span class="bar-role">${esc(s.roles[i])}</span>` : '';
+      const cls = s.h[i] || '';
+      const hPct = Math.max(16, (v / mx) * 100);
+      return `<div class="bar-col">
+        ${role}
+        <div class="bar ${cls}" style="height:${hPct}%">${v}</div>
+        <small class="bar-idx">[${i}]</small>
+      </div>`;
+    }).join('');
+  }
 
+  const stepCount = $('#step-count');
+  if (stepCount) stepCount.textContent = `Étape ${k + 1} / ${steps.length}`;
+
+  const msgEl = $('#msg');
+  if (msgEl) msgEl.innerHTML = `<strong>Étape ${k + 1}/${steps.length} :</strong> ${esc(s.m)}`;
+
+  // Test Logique box
+  const testBox = $('#test-box');
+  if (testBox && s.test) {
+    const evalEl = $('#test-eval');
+    if (evalEl) {
+      evalEl.textContent = s.test.ok ? '✔ VRAI' : '✘ FAUX';
+      evalEl.className = 'test-pill ' + (s.test.ok ? 'vrai' : 'faux');
+    }
+    const condEl = $('#test-cond');
+    if (condEl) condEl.innerHTML = `Condition : <code>${esc(s.test.cond)}</code>`;
+    const valsEl = $('#test-vals');
+    if (valsEl) valsEl.innerHTML = `Évaluation numérique : <strong>${esc(s.test.vals)}</strong>`;
+    const actEl = $('#test-act');
+    if (actEl) actEl.innerHTML = `Conséquence : <em>${esc(s.test.act)}</em>`;
+  }
+
+  // Variables & variables auxiliaires grid
+  const varsGrid = $('#vars-grid');
+  if (varsGrid && s.v) {
+    const varRoles = {
+      i: 'Indice boucle',
+      j: 'Indice parcours',
+      pm: 'Position min (aux)',
+      aux: 'Tampon échange (aux)',
+      cle: 'Clé à insérer (aux)',
+      permute: 'Permutation (aux)'
+    };
+    varsGrid.innerHTML = Object.keys(s.v).map(varName => {
+      const isAux = ['pm', 'aux', 'cle', 'permute'].includes(varName);
+      const role = varRoles[varName] || 'Variable';
+      return `<div class="var-card ${isAux ? 'aux' : ''}">
+        <span class="var-name">${esc(varName)}</span>
+        <span class="var-val">${esc(String(s.v[varName]))}</span>
+        <span class="var-desc">${esc(role)}</span>
+      </div>`;
+    }).join('');
+  } else {
+    const varsTable = $('#vars');
+    if (varsTable && s.v) {
+      varsTable.innerHTML = '<tr>' + Object.keys(s.v).map(x => `<th>${x}</th>`).join('') + '</tr><tr>' + Object.values(s.v).map(x => `<td>${x}</td>`).join('') + '</tr>';
+    }
+  }
+}
+
+function setupAnim(type) {
+  const sort = type === 'tri', it = type === 'it' || type === 'iter';
+  const sel = sort
+    ? '<option value="sel">Tri par sélection (recherche du minimum)</option><option value="bul">Tri à bulles (échange des voisins)</option><option value="ins">Tri par insertion (cartes en main)</option>'
+    : type === 'iter'
+    ? '<option value="som">Pour : somme de 1 à n</option><option value="chif">Tant que : nombre de chiffres</option><option value="rep">Répéter : plus petite puissance de 2 ≥ a</option>'
+    : it
+    ? '<option value="pgcd">PGCD (Euclide)</option><option value="prem">Nombre premier</option><option value="fact">Décomposition</option>'
+    : '<option value="seq">Séquentielle</option><option value="dic">Dichotomique</option><option value="mm">Maximum / minimum</option>';
+
+  const sortControls = sort ? `
+    <div class="anim-panel">
+      <div class="anim-controls-box">
+        <div class="ctl-row">
+          <label for="alg" class="ctl-label"><strong>Algorithme :</strong></label>
+          <select id="alg">${sel}</select>
+        </div>
+        <div class="ctl-row">
+          <label for="arr" class="ctl-label"><strong>Tableau à saisir :</strong></label>
+          <input id="arr" type="text" value="9, 4, 7, 1, 8" placeholder="Ex: 9, 4, 7, 1, 8" aria-label="Nombres entiers séparés par des virgules">
+          <button class="btn s" id="go" title="Valider et charger ce tableau">Charger le tableau</button>
+          <button class="btn s alt" id="rst" title="Remettre le tableau et les variables à l'état initial">🔄 Initialiser variables</button>
+        </div>
+        <div class="ctl-presets">
+          <span class="preset-label">Exemples rapides :</span>
+          <button type="button" class="btn-chip" data-arr="9, 4, 7, 1, 8">[9, 4, 7, 1, 8]</button>
+          <button type="button" class="btn-chip" data-arr="5, 2, 4, 1">[5, 2, 4, 1]</button>
+          <button type="button" class="btn-chip" data-arr="12, 3, 25, 8, 15">[12, 3, 25, 8, 15]</button>
+          <button type="button" class="btn-chip" data-arr="1, 2, 3, 4, 5">Déjà trié</button>
+          <button type="button" class="btn-chip" data-arr="5, 4, 3, 2, 1">Inversé</button>
+        </div>
+      </div>
+
+      <div class="bars-container" id="bars-wrap">
+        <div class="bars" id="bars"></div>
+        <div class="bars-legend">
+          <span class="legend-item"><span class="legend-color ok"></span> Trié</span>
+          <span class="legend-item"><span class="legend-color cur"></span> Examiné / En cours</span>
+          <span class="legend-item"><span class="legend-color min"></span> Minimum (pm) / Déplacé</span>
+          <span class="legend-item"><span class="legend-color key"></span> Clé (insertion)</span>
+        </div>
+      </div>
+
+      <div class="anim-playback-bar">
+        <button class="btn s" id="pv" aria-label="Étape précédente">◀ Précédent</button>
+        <button class="btn" id="pl" aria-label="Lecture ou pause">▶ Lecture</button>
+        <button class="btn s" id="nx" aria-label="Étape suivante">Suivant ▶</button>
+        <span class="anim-step-counter" id="step-count">Étape 1/1</span>
+        <label class="ctl-speed">Vitesse : <input type="range" id="sp" min="200" max="1800" value="850" aria-label="Vitesse d'animation"></label>
+      </div>
+
+      <div class="anim-details-grid">
+        <div class="anim-card anim-test-box" id="test-box">
+          <div class="anim-card-hd">
+            <span class="card-tag">🧪 Test Logique en direct</span>
+            <span class="test-pill" id="test-eval">—</span>
+          </div>
+          <div class="test-content">
+            <div class="test-cond" id="test-cond">Condition : <code>—</code></div>
+            <div class="test-vals" id="test-vals">Évaluation numérique : <strong>—</strong></div>
+            <div class="test-act" id="test-act">Conséquence : <em>—</em></div>
+          </div>
+        </div>
+
+        <div class="anim-card anim-vars-box">
+          <div class="anim-card-hd">
+            <span class="card-tag">📊 Variables &amp; Variables auxiliaires</span>
+          </div>
+          <div class="anim-vars-grid" id="vars-grid"></div>
+        </div>
+      </div>
+
+      <div class="msg anim-summary-msg" id="msg"></div>
+    </div>
+  ` : `
+    <h3>Animation pas à pas</h3>
+    <div class="ctl" style="margin-top:0"><select id="alg">${sel}</select>${it ? 'a = <input id="x" type="text" value="24" style="width:70px"> b = <input id="y" type="text" value="36" style="width:70px">' : (type === 'rech' ? 'x = <input id="x" type="text" value="31" style="width:60px"> ' : '') + '<input id="arr" type="text" value="12, 5, 9, 31, 7">'}<button class="btn s" id="go">Lancer</button></div>
+    <div class="bars" id="bars" style="${it ? 'display:none' : ''}"></div>
+    <div class="ctl" ${it ? 'style="margin-top:8px"' : ''}><button class="btn s" id="pv">◀</button><button class="btn" id="pl">▶ Lecture</button><button class="btn s" id="nx">▶|</button>Vitesse <input type="range" id="sp" min="150" max="1500" value="700"></div>
+    <div class="msg" id="msg"></div>
+    <table class="vars" id="vars"></table>
+  `;
+
+  $('#anim').innerHTML = sortControls;
+
+  const parseArr = () => {
+    const raw = ($('#arr') ? $('#arr').value : '').split(',').map(s => Number(s.trim())).filter(v => !isNaN(v) && isFinite(v));
+    return raw.length ? raw.slice(0, 10) : [9, 4, 7, 1, 8];
+  };
+
+  const go = () => {
+    stop();
+    $('#pl').textContent = '▶ Lecture';
+    const g = id => +$('#' + id).value, al = $('#alg').value;
+    if (it) {
+      let a = Math.abs(Math.round(g('x'))) || 1, b = Math.abs(Math.round(g('y')));
+      if (al === 'prem' || al === 'fact') a = Math.min(Math.max(a, 2), 5000);
+      else if (al !== 'pgcd') a = Math.min(a, 1000000000);
+      steps = iterSteps(al, a, b).slice(0, 400);
+    } else {
+      const a = parseArr();
+      steps = sort ? sortSteps(al, a) : al === 'dic' ? dichoSteps(a, g('x')) : al === 'mm' ? minmaxSteps(a) : seqSteps(a, g('x'));
+    }
+    k = 0;
+    draw();
+  };
+
+  const resetVars = () => {
+    stop();
+    $('#pl').textContent = '▶ Lecture';
+    k = 0;
+    draw();
+  };
+
+  const play = () => {
+    if (timer) {
+      stop();
+      $('#pl').textContent = '▶ Lecture';
+      return;
+    }
+    $('#pl').textContent = '⏸ Pause';
+    if (k >= steps.length - 1) k = 0;
+    timer = setInterval(() => {
+      if (k < steps.length - 1) {
+        k++;
+        draw();
+      } else {
+        stop();
+        $('#pl').textContent = '▶ Lecture';
+      }
+    }, +$('#sp').value);
+  };
+
+  $('#go').onclick = go;
+  const rstBtn = $('#rst');
+  if (rstBtn) rstBtn.onclick = resetVars;
+  $('#pl').onclick = play;
+  $('#sp').onchange = () => { if (timer) { stop(); play(); } };
+  $('#nx').onclick = () => { if (k < steps.length - 1) { k++; draw(); } };
+  $('#pv').onclick = () => { if (k > 0) { k--; draw(); } };
+  $('#alg').onchange = go;
+
+  // Presets chips click
+  document.querySelectorAll('.btn-chip[data-arr]').forEach(btn => {
+    btn.onclick = () => {
+      const v = btn.getAttribute('data-arr');
+      if ($('#arr')) $('#arr').value = v;
+      go();
+    };
+  });
+
+  go();
+}
 
 const PG=document.body.dataset.ch;const LS={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let PYN=0,PYP=null;
