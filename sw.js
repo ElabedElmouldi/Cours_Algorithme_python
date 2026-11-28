@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cours-algo-python-v2';
+const CACHE_NAME = 'cours-algo-python-v3';
 const ASSETS = [
   './',
   'index.html',
